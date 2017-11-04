@@ -1,5 +1,6 @@
 $(document).ready(function()
 {
+	$("#stopValue").val('0')
 
 	$("#flightImage").change(function()
 	{
@@ -19,12 +20,10 @@ $(document).ready(function()
 		{
 			for(i=0;i<totalIntermediateStops;i++)
 			{
-				$("#intermediateStop").append("Stop "+(i+1)+": <input type='text' name='stop"+(i+1)+"'> Layover: <input type='text' name='layover"+(i+1)+"'>")
+				$("#intermediateStop").append("Stop "+(i+1)+": <input type='text' required='required' placeholder='Enter Airport Name' name='stop"+(i+1)+"'> Layover: <input type='text' required='required' placeholder='Enter Layover Time' name='layover"+(i+1)+"'>")
 			}
 		}
 
 	});
-
-	
 
 });

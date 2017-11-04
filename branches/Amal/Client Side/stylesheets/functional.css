@@ -5,3 +5,26 @@
 .visible{
 	visibility: visible;
 }
+
+.textBoxRed
+{
+border-color: red;
+}
+
+.textBoxBlack
+{
+border-color: black;
+}
+
+.tooltip-arrow 
+{
+	border-top: 1px solid black;
+}
+
+.tooltip-inner
+{
+	background-color: #fff;
+	color: #000;
+	border: 1px solid black;
+	padding: 10px;
+}
