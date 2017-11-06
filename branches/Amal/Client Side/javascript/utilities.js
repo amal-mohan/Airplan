@@ -1,5 +1,40 @@
 $(document).ready(function()
 {
+
+//write logic to calculate arrival and departure time
+
+	$('#addFlight').trigger('reset')
+
+  	var today = new Date();
+  	var hour = today.getHours();
+  	var minute = today.getMinutes();
+	var today = new Date();
+	var month=today.getMonth()+1
+	var day=today.getDate()
+
+  	if(hour<10)
+	{
+		hour ='0'+hour
+	}
+	if(minute<10)
+	{
+		minute='0'+10
+	}
+	$('#dTime').val(hour+':'+minute)
+	$('#aTime').val(hour+':'+minute)
+
+	if(day<10)
+	{
+    day = '0'+day
+	} 
+	if(month<10) 
+	{
+    month = '0'+month
+	}
+
+	$('#journeyDate').val(today.getFullYear()+"-"+month+"-"+day)
+	$('#arrivalDate').val(today.getFullYear()+"-"+month+"-"+day)
+
 	$("#stopValue").val('0')
 
 	$("#flightImage").change(function()

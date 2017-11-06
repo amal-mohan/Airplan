@@ -10,16 +10,21 @@
 	<script src="../javascript/binder.js"></script>
 	<script src="../javascript/utilities.js"></script>
 	<script src="../javascript/validator.js"></script>
+		<script src="../javascript/fetchFlight.js"></script>
 </head>
 <body>
 
+<p id="books"></p>
 
-<form id="addFlight" method="post" action="../../Server Side/scripts/additem.php">
+<form id="addFlight" method="post" action="../../Server Side/scripts/additem.php" enctype="multipart/form-data">
 Upload Image: <span id='displayImageTool' data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Upload Airline Image" data-trigger='manual'><input id="flightImage" type="file" name="flightImage"></input></span>
 <br><img id="displayImage" class="hidden" src="#">
 
+
 Flight No: <span id='flightNoTool' data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Incorrect Flight Number Format" data-trigger='manual'><input type="text" id="flightNo" name="flightNo" required="required" placeholder="Enter Flight No eg AAA-11"></span>
 
+Departure Date : <input type="date" id="journeyDate" name=""/> Departure Time: <input type="time" name="" id="dTime">
+Arrival Date: <input type="date" id="arrivalDate" name=""/> Arrival Time: <input type="time" name="" id="aTime">
 
 Airlines: <span id='airlineTool' data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Airline name should have only alphanumeric characters" data-trigger='manual'><input type="text" id="airline" name="airline" placeholder="Enter Airline" required="required"></span>
 <!--if duel at least one stops-->
