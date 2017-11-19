@@ -18,8 +18,9 @@ $(document).ready(function()
 	}
 	if(minute<10)
 	{
-		minute='0'+10
+		minute='0'+minute
 	}
+
 	$('#dTime').val(hour+':'+minute)
 	$('#aTime').val(hour+':'+minute)
 
@@ -35,15 +36,45 @@ $(document).ready(function()
 	$('#journeyDate').val(today.getFullYear()+"-"+month+"-"+day)
 	$('#arrivalDate').val(today.getFullYear()+"-"+month+"-"+day)
 
+	var today = new Date().toISOString().split('T')[0];
+	$("#journeyDate").attr('min', today);
+	$("#arrivalDate").attr('min', today);
+	
+
 	$("#stopValue").val('0')
 
 	$("#flightImage").change(function()
-	{
-		if (this.files && this.files[0]) 
+	{	
+		
+		var fileExtention=['.jpg','.jpeg','.gif','.png']
+		var valid=false
+		var fileName=$('#flightImage').val()
+		for(var f in fileExtention)
 		{
-		  $("#displayImage").attr("src",URL.createObjectURL(this.files[0]))
-		  $("#displayImage").attr("class","visible")
+			extention=fileName.substr(fileName.length - fileExtention[f].length, fileExtention[f].length).toLowerCase()
+			if (extention == fileExtention[f])
+			{
+				valid = true;
+				break;
+			}
+		}
 
+		if(valid==true)
+		{
+			if (this.files[0]) 
+			{
+				$("#displayImage").attr("src",URL.createObjectURL(this.files[0]))
+				$("#displayImage").attr("class","visible")
+        	}
+        }
+        else
+        {
+        	$("#displayImage").attr("class","hidden")
+        	$('#flightImage').val("")
+        	$('#displayImageTool').attr('data-original-title','Incorrect file format')
+        	$('#displayImageTool').tooltip('show')
+			setTimeout(function(){$('#displayImageTool').tooltip('hide')},4000)
+			
         }
 	});
 
