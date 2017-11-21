@@ -5,6 +5,80 @@ $(document).ready(function()
 
 	var bug=10
 
+	// $('#searchItem').click(function()
+	// {
+	// 	var flightNo=$("#flightNo").val()
+	// 	if($.find('.textBoxRed').length!=0)
+	// 	{
+	// 		$('.textBoxRed').each(function()
+	// 		{
+	// 			var id=this.id
+	// 			var tool= "#"+id+"Tool"
+	// 			$(tool).tooltip('show')
+	// 			setTimeout(function(){$(tool).tooltip('hide')},4000)
+	// 		});
+	// 	}
+	// 	else
+	// 	{
+	// 	$.ajax(
+	// 			{
+	// 				url: "../../Server Side/scripts/flightNames.php",
+	// 				dataType: "json",
+	// 	 			success: function(data) 
+	// 	 			{
+	// 	 				existingflightNo=[]
+	// 	 				for(i in data['flightList'])
+	// 	 			 	{
+	// 					 	if(data['flightList'][i]['flightNo']==flightNo)
+	// 					 	{
+
+	// 					 		$('#displayImage').attr('src',data['flightList'][i]['image'])
+	// 					 		$('#airline').val(data['flightList'][i]['airline'])
+	// 					 		$("#from").val(data['flightList'][i]['from'])
+	// 					 		$("#to").val(data['flightList'][i]['to'])
+	// 							$('#nop').val(data['flightList'][i]['passengersNo'])
+	// 							$('#ePrice').val(data['flightList'][i]['eClassPrice'])
+	// 							$('#bPrice').val(data['flightList'][i]['bClassPrice'])
+	// 							$('#checkIn').val(data['flightList'][i]['checkinSize'])
+	// 							$('#cabIn').val(data['flightList'][i]['cabinSize'])
+	// 							$('#cancelFee').val(data['flightList'][i]['cancelFee'])
+	// 							$('#type').val(data['flightList'][i]['type'])
+ //        					    if(data['flightList'][i]['food']=='true')
+ //        					    {
+ //        					    	$('#food').attr('checked',data['flightList'][i]['food'])
+ //        					    }
+ //        					    else
+ //        					    {
+ //        					    	$('#food').removeAttr('checked')
+ //        					    }
+ //        					    $('#stopValue').val(data['flightList'][i]['intermediateStopNo']) 
+ //        						var totalIntermediateStops=$("#stopValue").val()
+	// 							if(totalIntermediateStops!=0)
+	// 							{
+	// 								$("#intermediateStop").empty()
+
+	// 								for(j=0;j<totalIntermediateStops;j++)
+	// 								{
+	// 									$("#intermediateStop").append("Stop "+(j+1)+":  <span id='intermediateStopTool"+j+"' data-toggle='tooltip' data-placement='bottom' data-original-title='Incorrect intermediate stop format' data-trigger='manual'><input type='text'  required='required' placeholder='Enter Airport Name' name='stop"+(j+1)+" id='stop"+(j+1)+"' value='"+data['flightList'][i]['intermediateStop'][j]+"'></span> Layover: <span id='Layover"+j+"' data-toggle='tooltip' data-placement='bottom' data-original-title='Incorrect Layover format' data-trigger='manual'> <input type='time' required='required' placeholder='Enter Layover Time(HH:MM)' name='layover"+(j+1)+" id='layover"+(j+1)+"' value='"+data['flightList'][i]['layover'][j]+"'></span>")
+										
+										
+	// 									$("#layover"+(j+1)).val(data['flightList'][i]['layover'][j])
+	// 								}
+	// 							}
+	// 							$('#flightDetails').attr('class','visible')
+ // 						    }
+
+	// 					}
+
+	// 				},
+	// 				error: function()
+	// 			 	{
+	// 			 		alert("error loading file");
+	// 		  	 	}	
+	//      		});
+	// }
+
+	// });
 
 	validlist=[]
 	$('#addFlight').submit(function()
@@ -98,9 +172,7 @@ $(document).ready(function()
 		$('#cancelFee').attr('class','textBoxBlack')
 	
 	});
-
-
-	$('#flightNo').blur(function()
+	$('#flightNo').keyup(function()
 	{
 		$('#flightNo').attr('class','textBoxBlack')
 		var flightNo=$("#flightNo").val()
@@ -108,16 +180,17 @@ $(document).ready(function()
 		{
 			if(flightNo.match(/^[a-zA-Z]{3}\-[0-9]{2}$/)==null)
 			{
-				$('#flightNo').attr('class','textBoxRed')	
-				$('#flightNoTool').attr('data-original-title',"Incorrect Flight Number Format")
+				$('#flightNo').attr('class','textBoxRed')
 				$('#flightNoTool').tooltip('show')
 				setTimeout(function(){$('#flightNoTool').tooltip('hide')},4000)
 				if(validlist.indexOf(this.id) != -1)
 				{	
 					validlist.splice(validlist.indexOf(this.id),1)
 				}
+				$('#flightDetails').attr('class','hidden')
+
 			}
-			else
+			else 
 			{
 				$.ajax(
 				{
@@ -131,30 +204,88 @@ $(document).ready(function()
 						 	existingflightNo.push(data['flightNo'][i])
 						}
 
-					 	if (existingflightNo.indexOf(flightNo) !=-1)
+					 	if (existingflightNo.indexOf(flightNo) ==-1)
 					 	{
 	 						$('#flightNo').attr('class','textBoxRed')
-							$('#flightNoTool').attr('data-original-title',"Flight Number exist")
+							$('#flightNoTool').attr('data-original-title',"Flight Number does not exist")
 							$('#flightNoTool').tooltip('show')
 							setTimeout(function(){$('#flightNoTool').tooltip('hide')},4000)
 							$('#flightDetails').attr('class','hidden')
-							
+						
 					 	}
-					 	else if (validlist.indexOf(this.id) == -1)
-						{		
-							validlist.push(this.id)
+					 	else
+					 	{
+					 				$.ajax(
+				{
+					url: "../../Server Side/scripts/flightNames.php",
+					dataType: "json",
+		 			success: function(data) 
+		 			{
+		 				existingflightNo=[]
+		 				for(i in data['flightList'])
+		 			 	{
+						 	if(data['flightList'][i]['flightNo']==flightNo)
+						 	{
+
+						 		$('#displayImage').attr('src',data['flightList'][i]['image'])
+						 		$('#airline').val(data['flightList'][i]['airline'])
+						 		$("#from").val(data['flightList'][i]['from'])
+						 		$("#to").val(data['flightList'][i]['to'])
+								$('#nop').val(data['flightList'][i]['passengersNo'])
+								$('#ePrice').val(data['flightList'][i]['eClassPrice'])
+								$('#bPrice').val(data['flightList'][i]['bClassPrice'])
+								$('#checkIn').val(data['flightList'][i]['checkinSize'])
+								$('#cabIn').val(data['flightList'][i]['cabinSize'])
+								$('#cancelFee').val(data['flightList'][i]['cancelFee'])
+								$('#type').val(data['flightList'][i]['type'])
+        					    if(data['flightList'][i]['food']=='true')
+        					    {
+        					    	$('#food').attr('checked',data['flightList'][i]['food'])
+        					    }
+        					    else
+        					    {
+        					    	$('#food').removeAttr('checked')
+        					    }
+        					    $('#stopValue').val(data['flightList'][i]['intermediateStopNo']) 
+        						var totalIntermediateStops=$("#stopValue").val()
+								if(totalIntermediateStops!=0)
+								{
+									$("#intermediateStop").empty()
+
+									for(j=0;j<totalIntermediateStops;j++)
+									{
+										$("#intermediateStop").append("Stop "+(j+1)+":  <span id='intermediateStopTool"+j+"' data-toggle='tooltip' data-placement='bottom' data-original-title='Incorrect intermediate stop format' data-trigger='manual'><input type='text'  required='required' placeholder='Enter Airport Name' name='stop"+(j+1)+" id='stop"+(j+1)+"' value='"+data['flightList'][i]['intermediateStop'][j]+"'></span> Layover: <span id='Layover"+j+"' data-toggle='tooltip' data-placement='bottom' data-original-title='Incorrect Layover format' data-trigger='manual'> <input type='time' required='required' placeholder='Enter Layover Time(HH:MM)' name='layover"+(j+1)+" id='layover"+(j+1)+"' value='"+data['flightList'][i]['layover'][j]+"'></span>")
+										
+										
+										$("#layover"+(j+1)).val(data['flightList'][i]['layover'][j])
+									}
+								}
+								$('#flightDetails').attr('class','visible')
+ 						    }
+
 						}
 
 					},
 					error: function()
 				 	{
 				 		alert("error loading file");
+			  	 	}	
+	     		});
+					 	}
+					},
+					error: function()
+				 	{
+				 		alert("error loading file");
 			  	 	}
 			  	 });
-			}
+				if (validlist.indexOf(this.id) == -1)
+				{		
+					validlist.push(this.id)
+				}
+			}	
 
 		}
-});
+	});
 
 	$('#airline').blur(function()
 	{

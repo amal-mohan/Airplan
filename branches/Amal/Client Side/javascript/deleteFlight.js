@@ -8,7 +8,7 @@ $(document).ready(function()
 
 	});
 
-	$('#addFlight').submit(function()
+	$('#deleteFlight').submit(function()
 	{
 		if($.find('.textBoxRed').length!=0)
 		{
@@ -36,7 +36,6 @@ $(document).ready(function()
 				$('#flightNoTool').tooltip('show')
 				setTimeout(function(){$('#flightNoTool').tooltip('hide')},4000)
 			}
-
 			else 
 			{		
 
@@ -66,10 +65,6 @@ $(document).ready(function()
 				 		alert("error loading file");
 			  	 	}	
 	     		});
-				if (validlist.indexOf(this.id) == -1)
-				{
-					validlist.push(this.id)
-				}
 			}
 
 		}
