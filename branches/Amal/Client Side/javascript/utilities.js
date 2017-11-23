@@ -3,6 +3,12 @@ $(document).ready(function()
 
 //write logic to calculate arrival and departure time
 
+	$('#cancel').click(function()
+	{
+		window.location.href = "../../Server Side/scripts/displayFlights.php";
+
+	});
+
 	$('#addFlight').trigger('reset')
 
   	var today = new Date();

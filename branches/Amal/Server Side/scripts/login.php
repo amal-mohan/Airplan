@@ -7,19 +7,29 @@ session_start();
 
 include_once 'dbconnect.php';
 
-//check if form is submitted
+
 if (isset($_POST['login'])) {
 
     $username = mysqli_real_escape_string($con, $_POST['username']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
-    $result = mysqli_query($con, "SELECT * FROM user WHERE `User_id` = '" . $username. "' and `password` = '" . md5($password) . "'");
+    $result = mysqli_query($con, "SELECT * FROM user WHERE `User_id` = '" . $username. "' and `Password` = '" . md5($password) . "'");
     $resultrow = mysqli_num_rows($result);
-
+    $row = mysqli_fetch_assoc($result);
     if ($resultrow) {
-        //$_SESSION['usr_id'] = $row['id'];
+        $_SESSION['user_id'] = $row['User_id'];
+
         //$_SESSION['usr_name'] = $row['name'];
-        //header("Location: index.php");
-        $loginmsg = "Successfully logged in!!";
+        if($username!='Admin')
+        {
+            header("Location: listairlines.php");
+        }
+        else
+        {
+            header("Location: displayFlights.php");   
+        }
+
+        //echo $_SESSION['user_id'];
+        $loginmsg = "Successfull!";
        
     } else {
         $errormsg = "Incorrect Email or Password!!!";
@@ -30,7 +40,7 @@ if (isset($_POST['login'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>PHP Login Script</title>
+    <title>Login</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" >
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
 </head>

@@ -9,41 +9,50 @@
     <script type="text/javascript" src="jquery-1.8.0.min.js"></script>
     <script src="../javascript/register.js"></script>
     <link rel="stylesheet" type="text/css" href="../stylesheets/functional.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/functional.css" />
+	<link rel="stylesheet" type="text/css" href="../stylesheets/style.css" />
+	<script src="../javascript/utilities.js"></script>
+
+
 </head>
 <body>
-	<h1>Form Validation</h1>
+	<div class="child" id="register-form">
+	<h1 id="register-header" class="text-primary">Register</h1>
 	<form class="signup" method = "post" action="../../Server Side/scripts/reg.php">
 		<table>
-			<tr>
-				<td><label for="username">Username:</label></td>
-				<td><input type="text" name="username" id="username"> </td>
-				<td><div class="result" id="result"></div></td>
+			<tr class="register-table">
+				<td class="register-table"><label for="username" class="text-muted">Username: <span class="star">*</span></label></td>
+				<td class="register-table"><span id='flightNoTool' data-toggle="tooltip" data-placement="right" title="" title="Incorrect Flight Number Format"><input type="text" name="username" id="username" placeholder="Enter Username" class="form-control"> </span></td>
+				<td class="register-table"><div class="result" id="result"></div></td>
 			</tr>
-			<tr>
-				<td><label for="name">First Name</label></td>
-				<td><input type="text" name="firstname" id="firstname"></td>
+			<tr class="register-table">
+				<td class="register-table"><label for="name" class="text-muted">First Name: <span class="star">*</span></label></td>
+				<td class="register-table"><input type="text" name="firstname" id="firstname" placeholder="Enter Firstname" class="form-control"></td>
 			</tr>
-			<tr>
-				<td><label for="name">Last Name</label></td>
-				<td><input type="text" name="lastname" id="lastname"></td>
+			<tr class="register-table">
+				<td class="register-table"><label for="name" class="text-muted">Last Name: <span class="star">*</span></label></td>
+				<td class="register-table"><input type="text" name="lastname" id="lastname" placeholder="Enter Lastname" class="form-control"></td>
 			</tr>
-			<tr>
-				<td><label for="password">Password:</label></td>
-				<td><input type="password" name="password" id="password"></td>
+			<tr class="register-table">
+				<td class="register-table"><label for="password" class="text-muted">Password: <span class="star">*</span></label></td>
+				<td class="register-table"><input type="password" name="password" id="password" placeholder="Enter Password" class="form-control"></td>
 			</tr>
-			<tr>
-				<td><label for="confirm password">Confirm Password:</label></td>
-				<td><input type="password" name="cpassword" id="cpassword"></td>
+			<tr class="register-table">
+				<td class="register-table"><label for="confirm password" class="text-muted">Confirm Password: <span class="star">*</span></label></td>
+				<td class="register-table"><input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" class="form-control"></td>
 			</tr>
-			<tr>
-				<td><label for="email">Email:</label></td>
-				<td><input type="text" name="email" id="email"></td>
+			<tr class="register-table">
+				<td class="register-table"><label for="email" class="text-muted">Email: <span class="star">*</span></label></td>
+				<td class="register-table"><input type="text" name="email" id="email" placeholder="Enter Email-Id" class="form-control"></td>
 			</tr>
-			<tr>
-			 <td><input type="submit" name="signup" value="Sign up"> <?php echo $errormsg ?></td>
+			<tr class="register-table">
+			 <td><input type="submit" name="signup" class="btn btn-primary" value="Sign up"> <?php echo $errormsg ?></td>
 			</tr>
 		</table>
 	</form>
-
+</div>
 </body>
 </html>

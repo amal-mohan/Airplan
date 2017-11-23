@@ -15,7 +15,7 @@ $userid = mysqli_real_escape_string($con, $_POST['username']);
 
     if(empty($firstname) || empty($lastname) ||empty($userid) ||empty($email) ||empty($password) ||empty($cpassword)){
     	
-    	header('location: validate.html');
+    	header('location: ../../Client Side/content/register.html');
     }
      if (empty($userid)){
         $error = true;
@@ -53,6 +53,7 @@ $userid = mysqli_real_escape_string($con, $_POST['username']);
         
         if(mysqli_query($con, "INSERT INTO user (User_id,First_name,Last_name,Password,Email) VALUES('" . $userid . "', '" . $firstname . "','" . $lastname . "', '" . md5($password) . "','" . $email . "')")) {
            $successmsg = "Successfully Registered! <a href='login.php'>Click here to Login</a>";
+            echo $successmsg;
         } else {
             $errormsg = "Error in registering...Please try again later!";
         echo $userid;
