@@ -7,10 +7,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="../stylesheets/functional.css">
-	<script src="../javascript/binder.js"></script>
 	<script src="../javascript/utilities.js"></script>
 	<script src="../javascript/validator.js"></script>
-	<script src="../javascript/fetchFlight.js"></script>
 </head>
 <body>
 
@@ -22,13 +20,13 @@ Upload Image: <span id='displayImageTool' data-toggle="tooltip" data-placement="
 
 Flight No: <span id='flightNoTool' data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Incorrect Flight Number Format" data-trigger='manual'><input type="text" id="flightNo" name="flightNo" required="required" placeholder="Enter Flight No eg AAA-11"></span>
 
-Departure Date : <input type="date" id="journeyDate" name=""/> Departure Time: <input type="time" name="" id="dTime">
-Arrival Date: <input type="date" id="arrivalDate" name=""/> Arrival Time: <input type="time" name="" id="aTime">
+Departure Date : <input type="date" id="journeyDate" name="dDate"/> Departure Time: <input type="time" name="dTime" id="dTime">
+Arrival Date: <input type="date" id="arrivalDate" name="aDate"/> Arrival Time: <input type="time" name="aTime" id="aTime">
 
 Airlines: <span id='airlineTool' data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Airline name should have only alphanumeric characters" data-trigger='manual'><input type="text" id="airline" name="airline" placeholder="Enter Airline" required="required"></span>
 <!--if duel at least one stops-->
 
-Type: <select><option selected="selected">Domestic</option><option>International</option><option>Duel</option></select>
+Type: <select name="type"><option selected="selected" value="Domestic">Domestic</option><option value="International">International</option><option value="Dual">Dual</option></select>
 
 From: <span id='fromTool' data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Orgin should have only alphanumeric characters" data-trigger='manual'><input id="from" placeholder="Enter Origin Airport" type="text" name="from" required="required"></span>
 
@@ -42,7 +40,7 @@ Economy Class Price:<span id='ePriceTool' data-toggle="tooltip" data-placement="
 
 Business Class Price:<span id='bPriceTool' data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Incorrect price format" data-trigger='manual'> <input type="text" id="bPrice" placeholder="Enter Business Class Cost" name="bPrice" required="required"></span>
 
-Cancellation Fee:<span id='cancelFeeTool' data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Incorrect cancellation fee format" data-trigger='manual'> <input type="text" id="cancelFee" placeholder="Enter Cancellation Cost"name="cancelFee" required="required"></span>
+Cancellation Fee:<span id='cancelFeeTool' data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Incorrect cancellation fee format" data-trigger='manual'> <input type="text" id="cancelFee" placeholder="Enter Cancellation Cost" name="cancelFee" required="required"></span>
 
 Check-In Baggage: <span id='checkInTool' data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Incorrect checkIn baggage weight" data-trigger='manual'><input type="text" id="checkIn" name="checkIn" placeholder="Enter CheckIn Baggage Limit" required="required"></span>
 

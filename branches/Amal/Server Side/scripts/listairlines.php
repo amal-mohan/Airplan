@@ -96,7 +96,9 @@ $("#suggesstion-box1").hide();
 	 	echo "Logged out!";
 	 }
 	 ?>
-</form>	
+</form>
+
+<a href="myfavorites.php">Favorites</a>	
 
 
 </div>

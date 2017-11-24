@@ -192,27 +192,26 @@ $(document).ready(function()
 			}
 			else 
 			{
-				$.ajax(
-				{
-					url: "../../Server Side/scripts/flightNo.php",
-					dataType: "json",
-		 			success: function(data) 
-		 			{
-		 				existingflightNo=[]
-		 				for(i in data['flightNo'])
-		 			 	{
-						 	existingflightNo.push(data['flightNo'][i])
-						}
-
-					 	if (existingflightNo.indexOf(flightNo) ==-1)
-					 	{
-	 						$('#flightNo').attr('class','textBoxRed')
-							$('#flightNoTool').attr('data-original-title',"Flight Number does not exist")
+			var dataPass = 'action=availability&flightNo='+flightNo;
+            $.ajax({ // Send the username val to available.php
+            type : 'POST',
+            data : dataPass,
+            url  : '../../Server Side/scripts/flightNo.php',
+            success: function(responseText){ 
+                  // Get the result
+                 if(responseText == 0)
+                 {
+					        $('#flightNo').attr('class','textBoxRed')
+							$('#flightNoTool').attr('data-original-title',"Flight Number exist")
 							$('#flightNoTool').tooltip('show')
 							setTimeout(function(){$('#flightNoTool').tooltip('hide')},4000)
-							$('#flightDetails').attr('class','hidden')
-						
-					 	}
+							$('#flightDetails').attr('class','hidden')       
+						}
+                else{
+                    alert('Problem with sql query');
+                }
+            }
+            });
 					 	else
 					 	{
 					 				$.ajax(

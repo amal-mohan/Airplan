@@ -119,38 +119,30 @@ $(document).ready(function()
 			}
 			else
 			{
-				$.ajax(
-				{
-					url: "../../Server Side/scripts/flightNo.php",
-					dataType: "json",
-		 			success: function(data) 
-		 			{
-		 				existingflightNo=[]
-		 				for(i in data['flightNo'])
-		 			 	{
-						 	existingflightNo.push(data['flightNo'][i])
-						}
-
-					 	if (existingflightNo.indexOf(flightNo) !=-1)
-					 	{
-	 						$('#flightNo').attr('class','textBoxRed')
+			var dataPass = 'action=availability&flightNo='+flightNo;
+            $.ajax({ 
+            type : 'POST',
+            data : dataPass,
+            url  : '../../Server Side/scripts/flightNo.php',
+            success: function(responseText){ 
+                  // Get the result
+                  alert(responseText)
+                 if(responseText == 0)
+                 {
+							validlist.push(this.id)
+                }
+                else if(responseText > 0){
+					        $('#flightNo').attr('class','textBoxRed')
 							$('#flightNoTool').attr('data-original-title',"Flight Number exist")
 							$('#flightNoTool').tooltip('show')
 							setTimeout(function(){$('#flightNoTool').tooltip('hide')},4000)
-							$('#flightDetails').attr('class','hidden')
-							
-					 	}
-					 	else if (validlist.indexOf(this.id) == -1)
-						{		
-							validlist.push(this.id)
-						}
-
-					},
-					error: function()
-				 	{
-				 		alert("error loading file");
-			  	 	}
-			  	 });
+							$('#flightDetails').attr('class','hidden')        }
+                else{
+                    alert('Problem with sql query');
+                }
+            }
+            });
+			
 			}
 
 		}
