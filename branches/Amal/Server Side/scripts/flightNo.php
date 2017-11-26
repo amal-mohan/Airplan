@@ -1,5 +1,7 @@
 
 <?php
+include_once('SessionManager.php');
+
 include_once('dbconnect.php');
     if(isset($_POST['action']) && $_POST['action'] == 'availability')
     {

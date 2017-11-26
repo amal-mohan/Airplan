@@ -1,5 +1,5 @@
 <?php
-session_start();
+include_once('SessionManager.php');
 
 include_once 'dbconnect.php';
 $flightno = $_POST['flightno'];

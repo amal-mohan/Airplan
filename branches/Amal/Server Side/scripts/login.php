@@ -32,7 +32,7 @@ if (isset($_POST['login'])) {
         $loginmsg = "Successfull!";
        
     } else {
-        $errormsg = "Incorrect Email or Password!!!";
+        $errormsg = '<div class="alert alert-danger">Incorrect Email or Password!!!</div>';
     }
 }
 ?>
@@ -42,25 +42,24 @@ if (isset($_POST['login'])) {
 <head>
     <title>Login</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" >
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../../Client Side/stylesheets/style.css">
 </head>
 <body>
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4 well">
-            <form role="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="loginform">
+<div class="child" id="register-form">
+            <form role="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="loginform" id="form1">
                 <fieldset>
-                    <legend>Login</legend>
+                    <legend id="register-header" class="text-primary" class="text-muted">Login</legend>
                     
                     <div class="form-group">
-                        <label for="name">Username</label>
+                        <label for="name" class="text-muted">Username <span class="star">*</span></label>
                         <input type="text" name="username" placeholder="Your Username" required class="form-control" />
                     </div>
 
                     <div class="form-group">
-                        <label for="name">Password</label>
+                        <label for="name" class="text-muted">Password <span class="star">*</span></label>
                         <input type="password" name="password" placeholder="Your Password" required class="form-control" />
                     </div>
 
@@ -70,17 +69,8 @@ if (isset($_POST['login'])) {
                 </fieldset>
             </form>
             <span class="text-danger"><?php if (isset($errormsg)) { echo $errormsg; } ?></span>
-            <span class="text-danger"><?php if (isset($loginmsg)) { echo $loginmsg; } ?></span>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4 text-center">    
-        New User? <a href="register1.php">Sign Up Here</a>
-        </div>
-    </div>
+            <span class="text-danger"><?php if (isset($loginmsg)) { echo $loginmsg; } ?></span><br/ >
+        New User? <a href="../../Client Side/content/register.html">Sign Up Here</a>
 </div>
-
-<script src="js/jquery-1.10.2.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

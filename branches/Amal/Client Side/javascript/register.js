@@ -1,4 +1,12 @@
+
 $(document).ready(function(){
+
+$('#cancel').click(function()
+  {
+    window.location.href = "../../Server Side/scripts/login.php";
+
+  });
+
     $('#username').keyup(function(){
         var username = $(this).val(); // Get username textbox using $(this)
         var Result = $('#result'); // Get ID of the result DIV where we display the results
@@ -30,12 +38,13 @@ $(document).ready(function(){
         }
     });
 
-    $(document).ready(function() {
+    $(document).ready(function() 
+    {
 
     var text1 = $("<span>OK</span>");
     var text5 = $("<span>OK</span>");
     var text6 = $("<span>OK</span>");
-    var text2 = $("<span>The username field must contain only alphabetical or numeric characters</span>");
+    var text2 = $("<span></span>");
     var text3 = $("<span>Passoword should have min. of 8 characters, 1 Upper, 1 Lower, 1 Number</span>");
     var text4 = $("<span>The email field should be a valid email address (local-part@domain)</span>");
     var text7 = $("<span>error</span>");
@@ -56,7 +65,6 @@ $(document).ready(function(){
     text5.attr('class','ok');
     text6.attr('class','ok');
   text11.attr('class','ok');
-  text2.attr('class','info');
     text3.attr('class','info');
     text4.attr('class','info');
   text10.attr('class','info');
@@ -71,7 +79,6 @@ $(document).ready(function(){
   text17.attr('class','error');
 
     $("#username").after(text1);
-    $("#username").after(text2);
     $("#username").after(text7);
     $("#password").after(text5);
     $("#password").after(text3);
@@ -111,7 +118,7 @@ $(document).ready(function(){
 
 
     $("#username").focus(function(){
-    text2.show();
+   
     text1.hide();
     text7.hide();
    })
@@ -119,7 +126,6 @@ $(document).ready(function(){
     text2.hide();
     if(/^[A-Za-z0-9 _.-]+$/.test($("#username").val())){
         text7.hide();
-          text1.show();
       text2.hide();
         }
 
@@ -136,14 +142,12 @@ $(document).ready(function(){
     }
    })
    $("#firstname").focus(function(){
-    text10.show();
     text11.hide();
     text12.hide();
    })
    $("#firstname").blur(function(){
     if(/^[A-Za-z]+$/.test($("#firstname").val())){
       text12.hide();
-      text11.show();
       text10.hide();
     }
     else
@@ -161,14 +165,12 @@ $(document).ready(function(){
     }
    })
    $("#lastname").focus(function(){
-    text15.show();
     text16.hide();
     text17.hide();
    })
    $("#lastname").blur(function(){
     if(/^[A-Za-z]+$/.test($("#lastname").val())){
       text15.hide();
-      text16.show();
       text17.hide();
     }
     else
@@ -197,7 +199,6 @@ $(document).ready(function(){
 
     }
    else{
-     text13.show();
 
     }
     if($("#cpassword").val()==0)
@@ -210,7 +211,6 @@ $(document).ready(function(){
    })
 
    $("#password").focus(function(){
-    text3.show();
     text5.hide();
     text8.hide();
    })
@@ -220,7 +220,6 @@ $(document).ready(function(){
     {
       text8.hide();
       text3.hide();
-      text5.show();
 
     }
     else
@@ -242,7 +241,6 @@ $(document).ready(function(){
         if(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i.test($("#email").val())){
             text9.hide();
             text4.hide();
-              text6.show();
         }
         else{
             text9.show();
@@ -252,7 +250,6 @@ $(document).ready(function(){
     })
 
    $("#email").focus(function(){
-    text4.show();
     text6.hide();
     text9.hide();
    })

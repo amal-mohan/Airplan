@@ -189,101 +189,90 @@ $(document).ready(function()
 				}
 				$('#flightDetails').attr('class','hidden')
 
-			}
-			else 
-			{
-			var dataPass = 'action=availability&flightNo='+flightNo;
-            $.ajax({ // Send the username val to available.php
-            type : 'POST',
-            data : dataPass,
-            url  : '../../Server Side/scripts/flightNo.php',
-            success: function(responseText){ 
-                  // Get the result
-                 if(responseText == 0)
-                 {
-					        $('#flightNo').attr('class','textBoxRed')
-							$('#flightNoTool').attr('data-original-title',"Flight Number exist")
-							$('#flightNoTool').tooltip('show')
-							setTimeout(function(){$('#flightNoTool').tooltip('hide')},4000)
-							$('#flightDetails').attr('class','hidden')       
-						}
-                else{
-                    alert('Problem with sql query');
-                }
             }
-            });
-					 	else
-					 	{
-					 				$.ajax(
-				{
-					url: "../../Server Side/scripts/flightNames.php",
-					dataType: "json",
-		 			success: function(data) 
-		 			{
-		 				existingflightNo=[]
-		 				for(i in data['flightList'])
-		 			 	{
-						 	if(data['flightList'][i]['flightNo']==flightNo)
-						 	{
+            else            
+              {             
+              	var dataPass ='action=availability&flightNo='+flightNo;            
 
-						 		$('#displayImage').attr('src',data['flightList'][i]['image'])
-						 		$('#airline').val(data['flightList'][i]['airline'])
-						 		$("#from").val(data['flightList'][i]['from'])
-						 		$("#to").val(data['flightList'][i]['to'])
-								$('#nop').val(data['flightList'][i]['passengersNo'])
-								$('#ePrice').val(data['flightList'][i]['eClassPrice'])
-								$('#bPrice').val(data['flightList'][i]['bClassPrice'])
-								$('#checkIn').val(data['flightList'][i]['checkinSize'])
-								$('#cabIn').val(data['flightList'][i]['cabinSize'])
-								$('#cancelFee').val(data['flightList'][i]['cancelFee'])
-								$('#type').val(data['flightList'][i]['type'])
-        					    if(data['flightList'][i]['food']=='true')
-        					    {
-        					    	$('#food').attr('checked',data['flightList'][i]['food'])
-        					    }
-        					    else
-        					    {
-        					    	$('#food').removeAttr('checked')
-        					    }
-        					    $('#stopValue').val(data['flightList'][i]['intermediateStopNo']) 
-        						var totalIntermediateStops=$("#stopValue").val()
-								if(totalIntermediateStops!=0)
+              	 $.ajax({ // Send the username val to available.php    
+              	          type : 'POST',
+              	          data :dataPass,   
+              	          url  : '../../Server Side/scripts/flightNo.php',
+						success: function(responseText)
+						{                    // Get the result
+								if(responseText == 0)                  
 								{
-									$("#intermediateStop").empty()
-
-									for(j=0;j<totalIntermediateStops;j++)
-									{
-										$("#intermediateStop").append("Stop "+(j+1)+":  <span id='intermediateStopTool"+j+"' data-toggle='tooltip' data-placement='bottom' data-original-title='Incorrect intermediate stop format' data-trigger='manual'><input type='text'  required='required' placeholder='Enter Airport Name' name='stop"+(j+1)+" id='stop"+(j+1)+"' value='"+data['flightList'][i]['intermediateStop'][j]+"'></span> Layover: <span id='Layover"+j+"' data-toggle='tooltip' data-placement='bottom' data-original-title='Incorrect Layover format' data-trigger='manual'> <input type='time' required='required' placeholder='Enter Layover Time(HH:MM)' name='layover"+(j+1)+" id='layover"+(j+1)+"' value='"+data['flightList'][i]['layover'][j]+"'></span>")
-										
-										
-										$("#layover"+(j+1)).val(data['flightList'][i]['layover'][j])
-									}
+											$('#flightNo').attr('class','textBoxRed')
+											$('#flightNoTool').attr('data-original-title',"Flight Number does not exist")
+											$('#flightNoTool').tooltip('show')
+											setTimeout(function(){$('#flightNoTool').tooltip('hide')},4000)
+											$('#flightDetails').attr('class','hidden')                                
 								}
-								$('#flightDetails').attr('class','visible')
- 						    }
+							
+								else  
+								{
+//////////////////////////////////////////////////////////////
+									var dataPass = 'action=availability&flightNo='+flightNo;
+									$.ajax({ // Send the username val to available.php    
+              				          type : 'POST',
+              	          			  data :dataPass,   
+							        url:"../../Server Side/scripts/flightNames.php",				
+							        dataType:"json"
+							        success: function(data){
+							        		existingflightNo=[] 
+										for(i in data['flightList'])
+										{
+										if(data['flightList'][i]['flightNo']==flightNo)
+										{
 
-						}
+							 				$('#displayImage').attr('src',data['flightList'][i]['image'])
+									 		$('#airline').val(data['flightList'][i]['airline'])
+						 		// $("#from").val(data['flightList'][i]['from'])
+						 		// $("#to").val(data['flightList'][i]['to'])
+											$('#nop').val(data['flightList'][i]['passengersNo'])
+											$('#ePrice').val(data['flightList'][i]['eClassPrice'])
+											$('#bPrice').val(data['flightList'][i]['bClassPrice'])
+											$('#checkIn').val(data['flightList'][i]['checkinSize'])
+											$('#cabIn').val(data['flightList'][i]['cabinSize'])
+											$('#cancelFee').val(data['flightList'][i]['cancelFee'])
+											$('#type').val(data['flightList'][i]['type'])
+        					    			if(data['flightList'][i]['food']=='true')
+        					    			{
+        					    				$('#food').attr('checked',data['flightList'][i]['food'])
+        					    			}
+        					   				 else
+        					    			{
+        					    				$('#food').removeAttr('checked')
+        					    			}
+			        					    $('#stopValue').val(data['flightList'][i]['intermediateStopNo']) 
+        									var totalIntermediateStops=$("#stopValue").val()
+											if(totalIntermediateStops!=0)
+											{
+												$("#intermediateStop").empty()
 
-					},
-					error: function()
-				 	{
-				 		alert("error loading file");
-			  	 	}	
-	     		});
+												for(j=0;j<totalIntermediateStops;j++)
+												{
+													$("#intermediateStop").append("Stop "+(j+1)+":  <span id='intermediateStopTool"+j+"' data-toggle='tooltip' data-placement='bottom' data-original-title='Incorrect intermediate stop format' data-trigger='manual'><input type='text'  required='required' placeholder='Enter Airport Name' name='stop"+(j+1)+" id='stop"+(j+1)+"' value='"+data['flightList'][i]['intermediateStop'][j]+"'></span> Layover: <span id='Layover"+j+"' data-toggle='tooltip' data-placement='bottom' data-original-title='Incorrect Layover format' data-trigger='manual'> <input type='time' required='required' placeholder='Enter Layover Time(HH:MM)' name='layover"+(j+1)+" id='layover"+(j+1)+"' value='"+data['flightList'][i]['layover'][j]+"'></span>")
+													$("#layover"+(j+1)).val(data['flightList'][i]['layover'][j])
+												}
+											}
+											$('#flightDetails').attr('class','visible')
+ 									    }
+
+									}
+
+							    		alert("m")
+
+							    	}});
+
+
+////////////////////////////////////////////////////////////////////////
 					 	}
-					},
-					error: function()
-				 	{
-				 		alert("error loading file");
-			  	 	}
-			  	 });
-				if (validlist.indexOf(this.id) == -1)
-				{		
-					validlist.push(this.id)
-				}
-			}	
+					 }
+					 });
+			}
+		}	
 
-		}
 	});
 
 	$('#airline').blur(function()

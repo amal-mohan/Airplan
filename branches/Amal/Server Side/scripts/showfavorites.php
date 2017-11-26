@@ -1,5 +1,5 @@
 <?php
-session_start();
+include_once('SessionManager.php');
 
 if(isset($_SESSION['user_id'])){
 	include_once 'dbconnect.php';$query2 = "SELECT * from flight_details f, user_favorites u where u.User_id = '".$_SESSION['user_id']."' and u.Flight_No = f.Flight_No";

@@ -108,6 +108,8 @@ $('#myInput').keyup(function()
 </script>
 
 <?php
+include_once('SessionManager.php');
+
 include_once 'dbconnect.php';
 session_start();
  $departure = $_POST['search-box'];

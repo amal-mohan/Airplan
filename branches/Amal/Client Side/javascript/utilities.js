@@ -2,6 +2,7 @@ $(document).ready(function()
 {
 
 //write logic to calculate arrival and departure time
+				
 
 	$('#cancel').click(function()
 	{
@@ -45,7 +46,9 @@ $(document).ready(function()
 	var today = new Date().toISOString().split('T')[0];
 	$("#journeyDate").attr('min', today);
 	$("#arrivalDate").attr('min', today);
-	
+	$("#departuredate").attr('min',today);
+	$("#returndate").attr('min',today);
+
 
 	$("#stopValue").val('0')
 

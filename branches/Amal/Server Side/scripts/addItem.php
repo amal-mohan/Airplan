@@ -1,5 +1,6 @@
 <?php
 
+include_once('SessionManager.php');
 
 include_once 'dbconnect.php';
 
@@ -47,7 +48,7 @@ for($i=0;$i<intval($stopValue);$i++)
 }
 
 
-$query = "INSERT INTO `flight_details` (`Flight_No`, `Operator`, `isOperational`, `display_image`, `flight_type`, `Food`, `Total_seats`, `current_seats`, `Economy_Class_Price`, `Business_Class_Price`, `Cancellation_Fee`, `Check-In_Baggage`, `Cabin _Baggage,`, `Number_of_Intermediate_Stops`) VALUES ('".$flightNo."','".$airline."',1,'".$target_file."','".$type."','".$food."','".$nop."','".$nop."','".$ePrice."','".$bPrice."','".$cancelFee."','".$checkIn."','".$cabIn."','".$stopValue."')";
+$query = "INSERT INTO `flight_details` (`Flight_No`, `Operator`, `isOperational`, `display_image`, `flight_type`, `Food`, `Total_seats`, `current_seats`, `Economy_Class_Price`, `Business_Class_Price`, `Cancellation_Fee`, `Check-In_Baggage`, `Cabin _Baggage`, `Number_of_Intermediate_Stops`) VALUES ('".$flightNo."','".$airline."',1,'".$target_file."','".$type."','".$food."','".$nop."','".$nop."','".$ePrice."','".$bPrice."','".$cancelFee."','".$checkIn."','".$cabIn."','".$stopValue."')";
 
 $result = mysqli_query($con,$query);
 
