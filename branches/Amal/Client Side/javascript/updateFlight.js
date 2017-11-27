@@ -3,83 +3,18 @@ $(document).ready(function()
 {
 	//add date compare logic
 
+	$('#cancel').click(function()
+	{
+		window.location.href = "../../Server Side/scripts/displayFlights.php";
+
+	});
+	$('#cancel1').click(function()
+	{
+		window.location.href = "../../Server Side/scripts/displayFlights.php";
+
+	});
+
 	var bug=10
-
-	// $('#searchItem').click(function()
-	// {
-	// 	var flightNo=$("#flightNo").val()
-	// 	if($.find('.textBoxRed').length!=0)
-	// 	{
-	// 		$('.textBoxRed').each(function()
-	// 		{
-	// 			var id=this.id
-	// 			var tool= "#"+id+"Tool"
-	// 			$(tool).tooltip('show')
-	// 			setTimeout(function(){$(tool).tooltip('hide')},4000)
-	// 		});
-	// 	}
-	// 	else
-	// 	{
-	// 	$.ajax(
-	// 			{
-	// 				url: "../../Server Side/scripts/flightNames.php",
-	// 				dataType: "json",
-	// 	 			success: function(data) 
-	// 	 			{
-	// 	 				existingflightNo=[]
-	// 	 				for(i in data['flightList'])
-	// 	 			 	{
-	// 					 	if(data['flightList'][i]['flightNo']==flightNo)
-	// 					 	{
-
-	// 					 		$('#displayImage').attr('src',data['flightList'][i]['image'])
-	// 					 		$('#airline').val(data['flightList'][i]['airline'])
-	// 					 		$("#from").val(data['flightList'][i]['from'])
-	// 					 		$("#to").val(data['flightList'][i]['to'])
-	// 							$('#nop').val(data['flightList'][i]['passengersNo'])
-	// 							$('#ePrice').val(data['flightList'][i]['eClassPrice'])
-	// 							$('#bPrice').val(data['flightList'][i]['bClassPrice'])
-	// 							$('#checkIn').val(data['flightList'][i]['checkinSize'])
-	// 							$('#cabIn').val(data['flightList'][i]['cabinSize'])
-	// 							$('#cancelFee').val(data['flightList'][i]['cancelFee'])
-	// 							$('#type').val(data['flightList'][i]['type'])
- //        					    if(data['flightList'][i]['food']=='true')
- //        					    {
- //        					    	$('#food').attr('checked',data['flightList'][i]['food'])
- //        					    }
- //        					    else
- //        					    {
- //        					    	$('#food').removeAttr('checked')
- //        					    }
- //        					    $('#stopValue').val(data['flightList'][i]['intermediateStopNo']) 
- //        						var totalIntermediateStops=$("#stopValue").val()
-	// 							if(totalIntermediateStops!=0)
-	// 							{
-	// 								$("#intermediateStop").empty()
-
-	// 								for(j=0;j<totalIntermediateStops;j++)
-	// 								{
-	// 									$("#intermediateStop").append("Stop "+(j+1)+":  <span id='intermediateStopTool"+j+"' data-toggle='tooltip' data-placement='bottom' data-original-title='Incorrect intermediate stop format' data-trigger='manual'><input type='text'  required='required' placeholder='Enter Airport Name' name='stop"+(j+1)+" id='stop"+(j+1)+"' value='"+data['flightList'][i]['intermediateStop'][j]+"'></span> Layover: <span id='Layover"+j+"' data-toggle='tooltip' data-placement='bottom' data-original-title='Incorrect Layover format' data-trigger='manual'> <input type='time' required='required' placeholder='Enter Layover Time(HH:MM)' name='layover"+(j+1)+" id='layover"+(j+1)+"' value='"+data['flightList'][i]['layover'][j]+"'></span>")
-										
-										
-	// 									$("#layover"+(j+1)).val(data['flightList'][i]['layover'][j])
-	// 								}
-	// 							}
-	// 							$('#flightDetails').attr('class','visible')
- // 						    }
-
-	// 					}
-
-	// 				},
-	// 				error: function()
-	// 			 	{
-	// 			 		alert("error loading file");
-	// 		  	 	}	
-	//      		});
-	// }
-
-	// });
-
 	validlist=[]
 	$('#addFlight').submit(function()
 	{
@@ -114,73 +49,88 @@ $(document).ready(function()
 
 	});
 
-	$('#flightNo').focus(function()
+$('#flightNo').focus(function()
 	{
-		$('#flightNo').attr('class','textBoxBlack')
+		$('#flightNo').addClass('textBoxBlack')
+		$('#flightNo').removeClass('textBoxRed')
 	
 	});
 
 	$('#nop').focus(function()
 	{
-		$('#nop').attr('class','textBoxBlack')
+		$('#nop').addClass('textBoxBlack')
+		$('#nop').removeClass('textBoxRed')
 	
 	});
 
 	$('#airline').focus(function()
 	{
-		$('#airline').attr('class','textBoxBlack')
+		$('#airline').addClass('textBoxBlack')
+		$('#airline').removeClass('textBoxRed')
 	
 	});
 
 	$('#from').focus(function()
 	{
-		$('#from').attr('class','textBoxBlack')
+		$('#from').addClass('textBoxBlack')
+		$('#from').removeClass('textBoxRed')
 	
 	});
 
 	$('#to').focus(function()
 	{
-		$('#to').attr('class','textBoxBlack')
+		$('#to').addClass('textBoxBlack')
+		$('#to').removeClass('textBoxRed')
 	
 	});
 
 	$('#ePrice').focus(function()
 	{
-		$('#ePrice').attr('class','textBoxBlack')
+		$('#ePrice').addClass('textBoxBlack')
+		$('#to').removeClass('textBoxRed')
 	
 	});
 
 	$('#bPrice').focus(function()
 	{
-		$('#bPrice').attr('class','textBoxBlack')
+		$('#bPrice').addClass('textBoxBlack')
+		$('#bPrice').removeClass('textBoxRed')
 	
 	});
 
 	$('#checkIn').focus(function()
 	{
-		$('#checkIn').attr('class','textBoxBlack')
+		$('#checkIn').addClass('textBoxBlack')
+		$('#checkIn').removeClass('textBoxRed')
 	
 	});
 
 	$('#cabIn').focus(function()
 	{
-		$('#cabIn').attr('class','textBoxBlack')
+		$('#cabIn').addClass('textBoxBlack')
+		$('#cabIn').removeClass('textBoxRed')
 	
 	});
 	$('#cancelFee').focus(function()
 	{
-		$('#cancelFee').attr('class','textBoxBlack')
+		$('#cancelFee').addClass('textBoxBlack')
+		$('#cancelFee').removeClass('textBoxRed')
 	
 	});
+
+
 	$('#flightNo').keyup(function()
 	{
-		$('#flightNo').attr('class','textBoxBlack')
+		$('#cancel1').removeClass('hidden')
+		$('#flightNo').addClass('textBoxBlack')
+		$('#flightNo').removeClass('textBoxRed')
 		var flightNo=$("#flightNo").val()
 		if((flightNo)!="")
 		{
 			if(flightNo.match(/^[a-zA-Z]{3}\-[0-9]{2}$/)==null)
 			{
-				$('#flightNo').attr('class','textBoxRed')
+				$('#flightNo').addClass('textBoxRed')
+				$('#flightNo').removeClass('textBoxBlack')	
 				$('#flightNoTool').tooltip('show')
 				setTimeout(function(){$('#flightNoTool').tooltip('hide')},4000)
 				if(validlist.indexOf(this.id) != -1)
@@ -194,7 +144,8 @@ $(document).ready(function()
               {             
               	var dataPass ='action=availability&flightNo='+flightNo;            
 
-              	 $.ajax({ // Send the username val to available.php    
+              	 $.ajax(
+              	 { // Send the username val to available.php    
               	          type : 'POST',
               	          data :dataPass,   
               	          url  : '../../Server Side/scripts/flightNo.php',
@@ -202,74 +153,82 @@ $(document).ready(function()
 						{                    // Get the result
 								if(responseText == 0)                  
 								{
-											$('#flightNo').attr('class','textBoxRed')
-											$('#flightNoTool').attr('data-original-title',"Flight Number does not exist")
-											$('#flightNoTool').tooltip('show')
-											setTimeout(function(){$('#flightNoTool').tooltip('hide')},4000)
-											$('#flightDetails').attr('class','hidden')                                
+									$('#flightNo').addClass('textBoxRed')
+									$('#flightNo').removeClass('textBoxBlack')	
+									$('#flightNoTool').attr('data-original-title',"Flight Number does not exist")
+									$('#flightNoTool').tooltip('show')
+									setTimeout(function(){$('#flightNoTool').tooltip('hide')},4000)
+									$('#flightDetails').attr('class','hidden')                                
 								}
 							
 								else  
 								{
-//////////////////////////////////////////////////////////////
-									var dataPass = 'action=availability&flightNo='+flightNo;
-									$.ajax({ // Send the username val to available.php    
-              				          type : 'POST',
-              	          			  data :dataPass,   
-							        url:"../../Server Side/scripts/flightNames.php",				
-							        dataType:"json"
-							        success: function(data){
-							        		existingflightNo=[] 
-										for(i in data['flightList'])
-										{
-										if(data['flightList'][i]['flightNo']==flightNo)
-										{
-
-							 				$('#displayImage').attr('src',data['flightList'][i]['image'])
-									 		$('#airline').val(data['flightList'][i]['airline'])
-						 		// $("#from").val(data['flightList'][i]['from'])
-						 		// $("#to").val(data['flightList'][i]['to'])
-											$('#nop').val(data['flightList'][i]['passengersNo'])
-											$('#ePrice').val(data['flightList'][i]['eClassPrice'])
-											$('#bPrice').val(data['flightList'][i]['bClassPrice'])
-											$('#checkIn').val(data['flightList'][i]['checkinSize'])
-											$('#cabIn').val(data['flightList'][i]['cabinSize'])
-											$('#cancelFee').val(data['flightList'][i]['cancelFee'])
-											$('#type').val(data['flightList'][i]['type'])
-        					    			if(data['flightList'][i]['food']=='true')
-        					    			{
-        					    				$('#food').attr('checked',data['flightList'][i]['food'])
-        					    			}
-        					   				 else
-        					    			{
-        					    				$('#food').removeAttr('checked')
-        					    			}
-			        					    $('#stopValue').val(data['flightList'][i]['intermediateStopNo']) 
-        									var totalIntermediateStops=$("#stopValue").val()
-											if(totalIntermediateStops!=0)
-											{
-												$("#intermediateStop").empty()
-
-												for(j=0;j<totalIntermediateStops;j++)
-												{
-													$("#intermediateStop").append("Stop "+(j+1)+":  <span id='intermediateStopTool"+j+"' data-toggle='tooltip' data-placement='bottom' data-original-title='Incorrect intermediate stop format' data-trigger='manual'><input type='text'  required='required' placeholder='Enter Airport Name' name='stop"+(j+1)+" id='stop"+(j+1)+"' value='"+data['flightList'][i]['intermediateStop'][j]+"'></span> Layover: <span id='Layover"+j+"' data-toggle='tooltip' data-placement='bottom' data-original-title='Incorrect Layover format' data-trigger='manual'> <input type='time' required='required' placeholder='Enter Layover Time(HH:MM)' name='layover"+(j+1)+" id='layover"+(j+1)+"' value='"+data['flightList'][i]['layover'][j]+"'></span>")
-													$("#layover"+(j+1)).val(data['flightList'][i]['layover'][j])
-												}
-											}
-											$('#flightDetails').attr('class','visible')
- 									    }
-
+									if(validlist.indexOf(this.id) != -1)
+									{	
+										validlist.splice(validlist.indexOf(this.id),1)
 									}
+//////////////////////////////////////////////////////////////
+									$('#cancel1').addClass('hidden')
+									var dataPass = 'action=availability&flightNo='+flightNo;
+									$.ajax(
+									{	type : 'POST',
+              	          			  	data :dataPass,   
+							        	url:"../../Server Side/scripts/flightNames.php",				
+							       		dataType:"json",
+							        	success: function(data)
+							        	{
 
-							    		alert("m")
+							        		existingflightNo=[] 
+											for(i in data)
+											{
+												if(data[i]['flightNo']==flightNo)
+												{
+													$("#fno").val(flightNo)
+													var image="../../Server Side/resources/"+data[i]['image']
+									 				$('#displayImage').attr('src',image)
+											 		$('#airline').val(data[i]['airline'])
+											 		$("#from").val(data[i]['from'])
+							 						$("#to").val(data[i]['to'])
+													$('#nop').val(data[i]['passengersNo'])
+													$('#ePrice').val(data[i]['eClassPrice'])
+													$('#bPrice').val(data[i]['bClassPrice'])
+													$('#checkIn').val(data[i]['checkinSize'])
+													$('#cabIn').val(data[i]['cabinSize'])
+													$('#cancelFee').val(data[i]['cancelFee'])
+													$('#type').val(data[i]['type'])
+        					    					if(data[i]['food']=='true')
+        					    					{
+        					    						$('#food').attr('checked',data[i]['food'])
+        					    					}
+	       					   						else
+        					    					{
+        					    						$('#food').removeAttr('checked')
+        					    					}
+				        					    	$('#stopValue').val(data[i]['intermediateStopNo']) 
+    	    										var totalIntermediateStops=$("#stopValue").val()
+													if(totalIntermediateStops!=0)
+													{
+														$("#intermediateStop").empty()
 
-							    	}});
+														for(j=0;j<totalIntermediateStops;j++)
+														{
+															$("#intermediateStop").append("<div class='form-group'><label>Stop "+(i+1)+":<span class='star'>*</span></label>  <span id='intermediateStopTool"+i+"' data-toggle='tooltip' data-placement='right' data-original-title='Incorrect intermediate stop format' data-trigger='manual'><input type='text' class='form-control' required='required' value='"+data[i]['intermediateStop'][j]+"' placeholder='Enter Airport Name' name='stop"+(i+1)+"'></span></div><div class='form-group'> <label>Layover:</label><span class='star'>*</span> <span id='Layover"+i+"' data-toggle='tooltip' data-placement='left' data-original-title='Incorrect Layover format' data-trigger='manual'> <input type='text' value='"+data[i]['layover'][j]+"' class='form-control' required='required' placeholder='Enter Layover Time(HH:MM)' id='layover"+(i+1)+"' name='layover"+(i+1)+"'></div>")
+														}
+													}
+													$('#flightDetails').attr('class','visible')
+ 										    	}
+
+											}
+
+
+								    	}
+							    	});
 
 
 ////////////////////////////////////////////////////////////////////////
-					 	}
-					 }
-					 });
+							 	}
+						}
+					});
 			}
 		}	
 
@@ -277,14 +236,17 @@ $(document).ready(function()
 
 	$('#airline').blur(function()
 	{
-		$('#airline').attr('class','textBoxBlack')
+		$('#airline').addClass('textBoxBlack')
+		$('#airline').removeClass('textBoxRed')
+
 		var airline=$("#airline").val()		
 		if((airline)!="")
 		{
-			if(airline.match(/^[a-zA-Z0-9]+$/)==null)
+			if(airline.match(/^[a-zA-Z0-9\s]+$/)==null)
 			{
 				bug+=1
-				$('#airline').attr('class','textBoxRed')
+				$('#airline').addClass('textBoxRed')
+				$('#airline').removeClass('textBoxBlack')
 				$('#airlineTool').tooltip('show')
 				setTimeout(function(){$('#airlineTool').tooltip('hide')},4000)
 				if(validlist.indexOf(this.id) != -1)
@@ -301,13 +263,15 @@ $(document).ready(function()
 
 	$('#from').blur(function()
 	{
-		$('#from').attr('class','textBoxBlack')
+		$('#from').addClass('textBoxBlack')
+		$('#from').removeClass('textBoxRed')
 		var from=$("#from").val()		
 		if((from)!="")
 		{
 			if(from.match(/^[a-zA-Z0-9]+$/)==null)
 			{
-				$('#from').attr('class','textBoxRed')
+				$('#from').addClass('textBoxRed')
+				$('#from').removeClass('textBoxBlack')
 				$('#fromTool').tooltip('show')
 				setTimeout(function(){$('#fromTool').tooltip('hide')},4000)
 			if(validlist.indexOf(this.id) != -1)
@@ -323,13 +287,15 @@ $(document).ready(function()
 });
 	$('#to').blur(function()
 	{
-		$('#to').attr('class','textBoxBlack')
+		$('#to').addClass('textBoxBlack')
+		$('#to').removeClass('textBoxRed')
 		var to=$("#to").val()		
 		if((to)!="")
 		{
 			if(to.match(/^[a-zA-Z0-9]+$/)==null)
 			{
-				$('#to').attr('class','textBoxRed')
+				$('#to').addClass('textBoxRed')
+				$('#flightNo').removeClass('textBoxBlack')
 				$('#toTool').tooltip('show')
 				setTimeout(function(){$('#toTool').tooltip('hide')},4000)
 			if(validlist.indexOf(this.id) != -1)
@@ -345,13 +311,15 @@ $(document).ready(function()
 });
 	$('#nop').blur(function()
 	{
-		$('#nop').attr('class','textBoxBlack')
+		$('#nop').addClass('textBoxBlack')
+		$('#nop').removeClass('textBoxRed')
 		var nop=$("#nop").val()		
 		if((nop)!="")
 		{
 			if(nop.match(/^[0-9]+$/)==null)
 			{
-				$('#nop').attr('class','textBoxRed')
+				$('#nop').addClass('textBoxRed')
+				$('#nop').removeClass('textBoxBlack')
 				$('#nopTool').tooltip('show')
 				setTimeout(function(){$('#nopTool').tooltip('hide')},4000)
 			if(validlist.indexOf(this.id) != -1)
@@ -368,13 +336,15 @@ $(document).ready(function()
 });
 	$('#bPrice').blur(function()
 	{
-		$('#bPrice').attr('class','textBoxBlack')
+		$('#bPrice').addClass('textBoxBlack')
+		$('#bPrice').removeClass('textBoxRed')
 		var bPrice=$("#bPrice").val()		
 		if((bPrice)!="")
 		{
 			if(bPrice.match(/^[0-9]*.?[0-9]+$/)==null)
 			{
-				$('#bPrice').attr('class','textBoxRed')
+				$('#bPrice').addClass('textBoxRed')
+				$('#bPrice').removeClass('textBoxBlack')
 				$('#bPriceTool').tooltip('show')
 				setTimeout(function(){$('#bPriceTool').tooltip('hide')},4000)
 			if(validlist.indexOf(this.id) != -1)
@@ -390,13 +360,15 @@ $(document).ready(function()
 });
 	$('#ePrice').blur(function()
 	{
-		$('#ePrice').attr('class','textBoxBlack')
+		$('#ePrice').addClass('textBoxBlack')
+		$('#ePrice').removeClass('textBoxRed')
 		var ePrice=$("#ePrice").val()		
 		if((ePrice)!="")
 		{
 			if(ePrice.match(/^[0-9]*.?[0-9]+$/)==null)
 			{
-				$('#ePrice').attr('class','textBoxRed')
+				$('#ePrice').addClass('textBoxRed')
+				$('#ePrice').removeClass('textBoxBlack')
 				$('#ePriceTool').tooltip('show')
 				setTimeout(function(){$('#ePriceTool').tooltip('hide')},4000)
 			if(validlist.indexOf(this.id) != -1)
@@ -412,13 +384,15 @@ $(document).ready(function()
 });
 	$('#cancelFee').blur(function()
 	{
-		$('#cancelFee').attr('class','textBoxBlack')
+		$('#cancelFee').addClass('textBoxBlack')
+		$('#cancelFee').removeClass('textBoxRed')
 		var cancelFee=$("#cancelFee").val()		
 		if((cancelFee)!="")
 		{
 			if(cancelFee.match(/^[0-9]*.?[0-9]+$/)==null)
 			{
-				$('#cancelFee').attr('class','textBoxRed')
+				$('#cancelFee').addClass('textBoxRed')
+				$('#cancelFee').removeClass('textBoxBlack')
 				$('#cancelFeeTool').tooltip('show')
 				setTimeout(function(){$('#cancelFeeTool').tooltip('hide')},4000)
 			if(validlist.indexOf(this.id) != -1)
@@ -434,13 +408,15 @@ $(document).ready(function()
 });
 	$('#checkIn').blur(function()
 	{
-		$('#checkIn').attr('class','textBoxBlack')
+		$('#checkIn').addClass('textBoxBlack')
+		$('#checkIn').removeClass('textBoxRed')
 		var checkIn=$("#checkIn").val()		
 		if((checkIn)!="")
 		{
 			if(checkIn.match(/^[0-9]*.?[0-9]+$/)==null)
 			{
-				$('#checkIn').attr('class','textBoxRed')
+				$('#checkIn').addClass('textBoxRed')
+				$('#checkIn').removeClass('textBoxBlack')
 				$('#checkInTool').tooltip('show')
 				setTimeout(function(){$('#checkInTool').tooltip('hide')},4000)
 			if(validlist.indexOf(this.id) != -1)
@@ -456,13 +432,15 @@ $(document).ready(function()
 });
 	$('#cabIn').blur(function()
 	{
-		$('#cabIn').attr('class','textBoxBlack')
+		$('#cabIn').addClass('textBoxBlack')
+		$('#cabIn').removeClass('textBoxRed')
 		var cabIn=$("#cabIn").val()		
 		if((cabIn)!="")
 		{
 			if(cabIn.match(/^[0-9]*.?[0-9]+$/)==null)
 			{
-				$('#cabIn').attr('class','textBoxRed')
+				$('#cabIn').addClass('textBoxRed')
+				$('#cabIn').removeClass('textBoxBlack')
 				$('#cabInTool').tooltip('show')
 				setTimeout(function(){$('#cabInTool').tooltip('hide')},4000)
 			if(validlist.indexOf(this.id) != -1)

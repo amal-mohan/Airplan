@@ -42,73 +42,85 @@ $(document).ready(function()
 
 	$('#flightNo').focus(function()
 	{
-		$('#flightNo').attr('class','textBoxBlack')
+		$('#flightNo').addClass('textBoxBlack')
+		$('#flightNo').removeClass('textBoxRed')
 	
 	});
 
 	$('#nop').focus(function()
 	{
-		$('#nop').attr('class','textBoxBlack')
+		$('#nop').addClass('textBoxBlack')
+		$('#nop').removeClass('textBoxRed')
 	
 	});
 
 	$('#airline').focus(function()
 	{
-		$('#airline').attr('class','textBoxBlack')
+		$('#airline').addClass('textBoxBlack')
+		$('#airline').removeClass('textBoxRed')
 	
 	});
 
 	$('#from').focus(function()
 	{
-		$('#from').attr('class','textBoxBlack')
+		$('#from').addClass('textBoxBlack')
+		$('#from').removeClass('textBoxRed')
 	
 	});
 
 	$('#to').focus(function()
 	{
-		$('#to').attr('class','textBoxBlack')
+		$('#to').addClass('textBoxBlack')
+		$('#to').removeClass('textBoxRed')
 	
 	});
 
 	$('#ePrice').focus(function()
 	{
-		$('#ePrice').attr('class','textBoxBlack')
+		$('#ePrice').addClass('textBoxBlack')
+		$('#to').removeClass('textBoxRed')
 	
 	});
 
 	$('#bPrice').focus(function()
 	{
-		$('#bPrice').attr('class','textBoxBlack')
+		$('#bPrice').addClass('textBoxBlack')
+		$('#bPrice').removeClass('textBoxRed')
 	
 	});
 
 	$('#checkIn').focus(function()
 	{
-		$('#checkIn').attr('class','textBoxBlack')
+		$('#checkIn').addClass('textBoxBlack')
+		$('#checkIn').removeClass('textBoxRed')
 	
 	});
 
 	$('#cabIn').focus(function()
 	{
-		$('#cabIn').attr('class','textBoxBlack')
+		$('#cabIn').addClass('textBoxBlack')
+		$('#cabIn').removeClass('textBoxRed')
 	
 	});
 	$('#cancelFee').focus(function()
 	{
-		$('#cancelFee').attr('class','textBoxBlack')
+		$('#cancelFee').addClass('textBoxBlack')
+		$('#cancelFee').removeClass('textBoxRed')
 	
 	});
 
 
 	$('#flightNo').blur(function()
 	{
-		$('#flightNo').attr('class','textBoxBlack')
+		$('#flightNo').addClass('textBoxBlack')
+		$('#flightNo').removeClass('textBoxRed')
 		var flightNo=$("#flightNo").val()
 		if((flightNo)!="")
 		{
 			if(flightNo.match(/^[a-zA-Z]{3}\-[0-9]{2}$/)==null)
 			{
-				$('#flightNo').attr('class','textBoxRed')	
+				$('#flightNo').addClass('textBoxRed')
+				$('#flightNo').removeClass('textBoxBlack')	
 				$('#flightNoTool').attr('data-original-title',"Incorrect Flight Number Format")
 				$('#flightNoTool').tooltip('show')
 				setTimeout(function(){$('#flightNoTool').tooltip('hide')},4000)
@@ -126,17 +138,17 @@ $(document).ready(function()
             url  : '../../Server Side/scripts/flightNo.php',
             success: function(responseText){ 
                   // Get the result
-                  alert(responseText)
                  if(responseText == 0)
                  {
 							validlist.push(this.id)
                 }
                 else if(responseText > 0){
-					        $('#flightNo').attr('class','textBoxRed')
+					        $('#flightNo').addClass('textBoxRed')
+					        $('#flightNo').removeClass('textBoxBlack')
 							$('#flightNoTool').attr('data-original-title',"Flight Number exist")
 							$('#flightNoTool').tooltip('show')
 							setTimeout(function(){$('#flightNoTool').tooltip('hide')},4000)
-							$('#flightDetails').attr('class','hidden')        }
+							$('#flightDetails').addClass('hidden')        }
                 else{
                     alert('Problem with sql query');
                 }
@@ -150,14 +162,17 @@ $(document).ready(function()
 
 	$('#airline').blur(function()
 	{
-		$('#airline').attr('class','textBoxBlack')
+		$('#airline').addClass('textBoxBlack')
+		$('#airline').removeClass('textBoxRed')
+
 		var airline=$("#airline").val()		
 		if((airline)!="")
 		{
-			if(airline.match(/^[a-zA-Z0-9]+$/)==null)
+			if(airline.match(/^[a-zA-Z0-9\s]+$/)==null)
 			{
 				bug+=1
-				$('#airline').attr('class','textBoxRed')
+				$('#airline').addClass('textBoxRed')
+				$('#airline').removeClass('textBoxBlack')
 				$('#airlineTool').tooltip('show')
 				setTimeout(function(){$('#airlineTool').tooltip('hide')},4000)
 				if(validlist.indexOf(this.id) != -1)
@@ -174,13 +189,15 @@ $(document).ready(function()
 
 	$('#from').blur(function()
 	{
-		$('#from').attr('class','textBoxBlack')
+		$('#from').addClass('textBoxBlack')
+		$('#from').removeClass('textBoxRed')
 		var from=$("#from").val()		
 		if((from)!="")
 		{
 			if(from.match(/^[a-zA-Z0-9]+$/)==null)
 			{
-				$('#from').attr('class','textBoxRed')
+				$('#from').addClass('textBoxRed')
+				$('#from').removeClass('textBoxBlack')
 				$('#fromTool').tooltip('show')
 				setTimeout(function(){$('#fromTool').tooltip('hide')},4000)
 			if(validlist.indexOf(this.id) != -1)
@@ -196,13 +213,15 @@ $(document).ready(function()
 });
 	$('#to').blur(function()
 	{
-		$('#to').attr('class','textBoxBlack')
+		$('#to').addClass('textBoxBlack')
+		$('#to').removeClass('textBoxRed')
 		var to=$("#to").val()		
 		if((to)!="")
 		{
 			if(to.match(/^[a-zA-Z0-9]+$/)==null)
 			{
-				$('#to').attr('class','textBoxRed')
+				$('#to').addClass('textBoxRed')
+				$('#flightNo').removeClass('textBoxBlack')
 				$('#toTool').tooltip('show')
 				setTimeout(function(){$('#toTool').tooltip('hide')},4000)
 			if(validlist.indexOf(this.id) != -1)
@@ -218,13 +237,15 @@ $(document).ready(function()
 });
 	$('#nop').blur(function()
 	{
-		$('#nop').attr('class','textBoxBlack')
+		$('#nop').addClass('textBoxBlack')
+		$('#nop').removeClass('textBoxRed')
 		var nop=$("#nop").val()		
 		if((nop)!="")
 		{
 			if(nop.match(/^[0-9]+$/)==null)
 			{
-				$('#nop').attr('class','textBoxRed')
+				$('#nop').addClass('textBoxRed')
+				$('#nop').removeClass('textBoxBlack')
 				$('#nopTool').tooltip('show')
 				setTimeout(function(){$('#nopTool').tooltip('hide')},4000)
 			if(validlist.indexOf(this.id) != -1)
@@ -241,13 +262,15 @@ $(document).ready(function()
 });
 	$('#bPrice').blur(function()
 	{
-		$('#bPrice').attr('class','textBoxBlack')
+		$('#bPrice').addClass('textBoxBlack')
+		$('#bPrice').removeClass('textBoxRed')
 		var bPrice=$("#bPrice").val()		
 		if((bPrice)!="")
 		{
 			if(bPrice.match(/^[0-9]*.?[0-9]+$/)==null)
 			{
-				$('#bPrice').attr('class','textBoxRed')
+				$('#bPrice').addClass('textBoxRed')
+				$('#bPrice').removeClass('textBoxBlack')
 				$('#bPriceTool').tooltip('show')
 				setTimeout(function(){$('#bPriceTool').tooltip('hide')},4000)
 			if(validlist.indexOf(this.id) != -1)
@@ -263,13 +286,15 @@ $(document).ready(function()
 });
 	$('#ePrice').blur(function()
 	{
-		$('#ePrice').attr('class','textBoxBlack')
+		$('#ePrice').addClass('textBoxBlack')
+		$('#ePrice').removeClass('textBoxRed')
 		var ePrice=$("#ePrice").val()		
 		if((ePrice)!="")
 		{
 			if(ePrice.match(/^[0-9]*.?[0-9]+$/)==null)
 			{
-				$('#ePrice').attr('class','textBoxRed')
+				$('#ePrice').addClass('textBoxRed')
+				$('#ePrice').removeClass('textBoxBlack')
 				$('#ePriceTool').tooltip('show')
 				setTimeout(function(){$('#ePriceTool').tooltip('hide')},4000)
 			if(validlist.indexOf(this.id) != -1)
@@ -285,13 +310,15 @@ $(document).ready(function()
 });
 	$('#cancelFee').blur(function()
 	{
-		$('#cancelFee').attr('class','textBoxBlack')
+		$('#cancelFee').addClass('textBoxBlack')
+		$('#cancelFee').removeClass('textBoxRed')
 		var cancelFee=$("#cancelFee").val()		
 		if((cancelFee)!="")
 		{
 			if(cancelFee.match(/^[0-9]*.?[0-9]+$/)==null)
 			{
-				$('#cancelFee').attr('class','textBoxRed')
+				$('#cancelFee').addClass('textBoxRed')
+				$('#cancelFee').removeClass('textBoxBlack')
 				$('#cancelFeeTool').tooltip('show')
 				setTimeout(function(){$('#cancelFeeTool').tooltip('hide')},4000)
 			if(validlist.indexOf(this.id) != -1)
@@ -307,13 +334,15 @@ $(document).ready(function()
 });
 	$('#checkIn').blur(function()
 	{
-		$('#checkIn').attr('class','textBoxBlack')
+		$('#checkIn').addClass('textBoxBlack')
+		$('#checkIn').removeClass('textBoxRed')
 		var checkIn=$("#checkIn").val()		
 		if((checkIn)!="")
 		{
 			if(checkIn.match(/^[0-9]*.?[0-9]+$/)==null)
 			{
-				$('#checkIn').attr('class','textBoxRed')
+				$('#checkIn').addClass('textBoxRed')
+				$('#checkIn').removeClass('textBoxBlack')
 				$('#checkInTool').tooltip('show')
 				setTimeout(function(){$('#checkInTool').tooltip('hide')},4000)
 			if(validlist.indexOf(this.id) != -1)
@@ -329,13 +358,15 @@ $(document).ready(function()
 });
 	$('#cabIn').blur(function()
 	{
-		$('#cabIn').attr('class','textBoxBlack')
+		$('#cabIn').addClass('textBoxBlack')
+		$('#cabIn').removeClass('textBoxRed')
 		var cabIn=$("#cabIn").val()		
 		if((cabIn)!="")
 		{
 			if(cabIn.match(/^[0-9]*.?[0-9]+$/)==null)
 			{
-				$('#cabIn').attr('class','textBoxRed')
+				$('#cabIn').addClass('textBoxRed')
+				$('#cabIn').removeClass('textBoxBlack')
 				$('#cabInTool').tooltip('show')
 				setTimeout(function(){$('#cabInTool').tooltip('hide')},4000)
 			if(validlist.indexOf(this.id) != -1)
@@ -349,4 +380,4 @@ $(document).ready(function()
 			}
 		}
 });
-});
+}); 	

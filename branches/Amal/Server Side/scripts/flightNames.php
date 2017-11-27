@@ -1,3 +1,5 @@
+
+
 <?php
 include_once('SessionManager.php');
 include_once('dbconnect.php');
@@ -24,6 +26,8 @@ include_once('dbconnect.php');
                           "flightNo"=> $row['Flight_No'],
                           "image"=> $row['display_image'],
                           "airline"=> $row['Operator'],
+                          "from"=>$row['Origin'],
+                          "to"=>$row['Destination'],
                           "type"=> $row['flight_type'],
                           "food"=> $row['Food'],
                           "passengersNo"=> $row['Total_seats'],
@@ -31,7 +35,7 @@ include_once('dbconnect.php');
                           "bClassPrice"=> $row['Business_Class_Price'],
                           "cancelFee"=> $row['Cancellation_Fee'],
                           "checkinSize"=> $row['Check-In_Baggage'],
-                          "cabinSize"=> $row['Cabin _Baggage'],
+                          "cabinSize"=> $row['Cabin_Baggage'],
                           "intermediateStopNo"=> $row['Number_of_Intermediate_Stops'],
                           "intermediateStop"=> $location1,
                           "layover"=> $layover);

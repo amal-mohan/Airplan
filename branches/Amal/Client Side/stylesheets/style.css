@@ -23,7 +23,21 @@ color: red;
 	border-radius: 25px;
 }
 
+.push
+{
+	padding: 18px;
+	margin-left: 10px;
+}
 
+#cent-head
+{
+	text-align: center;
+}
+
+#addFlightForm
+{
+	width: 60%;
+}
 		
 .register-table
 {

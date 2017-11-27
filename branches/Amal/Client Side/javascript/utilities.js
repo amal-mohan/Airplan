@@ -40,6 +40,9 @@ $(document).ready(function()
     month = '0'+month
 	}
 
+
+	
+
 	$('#journeyDate').val(today.getFullYear()+"-"+month+"-"+day)
 	$('#arrivalDate').val(today.getFullYear()+"-"+month+"-"+day)
 
@@ -73,12 +76,14 @@ $(document).ready(function()
 			if (this.files[0]) 
 			{
 				$("#displayImage").attr("src",URL.createObjectURL(this.files[0]))
-				$("#displayImage").attr("class","visible")
+				$("#displayImage").addClass("visible")
+				$("#displayImage").removeClass("hidden")
         	}
         }
         else
         {
-        	$("#displayImage").attr("class","hidden")
+        	$("#displayImage").addClass("hidden")
+        	$("#displayImage").removeClass("visible")
         	$('#flightImage').val("")
         	$('#displayImageTool').attr('data-original-title','Incorrect file format')
         	$('#displayImageTool').tooltip('show')
@@ -95,10 +100,43 @@ $(document).ready(function()
 		{
 			for(i=0;i<totalIntermediateStops;i++)
 			{
-				$("#intermediateStop").append("Stop "+(i+1)+":  <span id='intermediateStopTool"+i+"' data-toggle='tooltip' data-placement='bottom' data-original-title='Incorrect intermediate stop format' data-trigger='manual'><input type='text' required='required' placeholder='Enter Airport Name' name='stop"+(i+1)+"'></span> Layover: <span id='Layover"+i+"' data-toggle='tooltip' data-placement='bottom' data-original-title='Incorrect Layover format' data-trigger='manual'> <input type='text' required='required' placeholder='Enter Layover Time(HH:MM)' name='layover"+(i+1)+"'>")
+				$("#intermediateStop").append("<div class='form-group'><label>Stop "+(i+1)+":<span class='star'>*</span></label>  <span id='intermediateStopTool"+i+"' data-toggle='tooltip' data-placement='right' data-original-title='Incorrect intermediate stop format' data-trigger='manual'><input type='text' class='form-control' required='required' placeholder='Enter Airport Name' name='stop"+(i+1)+"'></span></div><div class='form-group'> <label>Layover:</label><span class='star'>*</span> <span id='Layover"+i+"' data-toggle='tooltip' data-placement='left' data-original-title='Incorrect Layover format' data-trigger='manual'> <input type='text' class='form-control' required='required' placeholder='Enter Layover Time(HH:MM)' name='layover"+(i+1)+"'></div><div class='form-group'><label>Departure Date:<span class='star'>*</span></label> <input type='date' class='form-control' id='journeyDatei"+(i+1)+"' name='diDate"+(i+1)+"'/></div><div class='form-group'><label>Departure Time:<span class='star'>*</span></label> <input type='time' name='diTime"+(i+1)+"' id='diTime"+(i+1)+"' class='form-control'></div><div class='form-group'><label>Arrival Date:<span class='star'>*</span></label> <input type='date' id='arrivalDatei"+(i+1)+"' name='aiDate"+(i+1)+"' class='form-control'/> </div><div class='form-group'><label>Arrival Time:<span class='star'>*</span></label> <input type='time' name='aiTime"+(i+1)+"' id='aiTime"+(i+1)+"' class='form-control'></div>")
 			}
 		}
+var today = new Date();
+	var month=today.getMonth()+1
+	var day=today.getDate()
+
+  	if(hour<10)
+	{
+		hour ='0'+hour
+	}
+	if(minute<10)
+	{
+		minute='0'+minute
+	}
+
+	$('#dTime').val(hour+':'+minute)
+	$('#aTime').val(hour+':'+minute)
+
+	if(day<10)
+	{
+    day = '0'+day
+	} 
+	if(month<10) 
+	{
+    month = '0'+month
+	}
+
+		$('#intermediateStop').find('input[type="date"]').val(today.getFullYear()+"-"+month+"-"+day)
+
 
 	});
+
+	// $("input[name='layover1']").blur(function(){
+	// 	alert($(this).val())
+	// 	alert("jf")
+	// });
+
 
 });

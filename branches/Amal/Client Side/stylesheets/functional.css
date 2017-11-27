@@ -17,8 +17,8 @@ border-color: black;
 }
 
 
-.tooltip.bottom .tooltip-arrow {
-	border-bottom-color: #FADBD8;}
+.tooltip.right .tooltip-arrow {
+	border-right-color: #FADBD8;}
 
 
 .tooltip-inner

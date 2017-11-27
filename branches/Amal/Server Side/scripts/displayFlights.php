@@ -3,6 +3,12 @@
 <head>
     <title>Flights</title>
     <link rel="stylesheet" type="text/css" href="../../Client Side/stylesheets/functional.css">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../../Client Side/stylesheets/style.css">
+
+
     <style>
 * {
   box-sizing: border-box;
@@ -55,12 +61,15 @@
 <script>
 $(document).ready(function()
 {
+
 $("#fli1").style.color = "red"
 //    var name = '<?php echo json_encode($num_rows) ?>';
   //  alert(name);
+alert("kh")
 
 $('#myInput').keyup(function() 
 {
+   
     var input, filter, ul, li, a, i;
     input = $("#myInput").val();
     filter = input.toUpperCase();
@@ -68,7 +77,7 @@ $('#myInput').keyup(function()
     li = ul.getElementsByTagName("tr");
     for (i = 1; i < li.length; i++) 
     {
- 
+
         a1 = li[i].getElementsByTagName("td")[0];
         a = a1.getElementsByTagName("a")[0];
 
@@ -79,6 +88,7 @@ $('#myInput').keyup(function()
 
         }
     }
+
     ul = document.getElementById("myUL2");
     li = ul.getElementsByTagName("tr");
     for (i = 1; i < li.length; i++) {
@@ -106,7 +116,6 @@ $('#myInput').keyup(function()
 });
 });
 </script>
-
 <?php
 include_once('SessionManager.php');
 
@@ -169,17 +178,24 @@ else if(!empty($departure) && !empty($arrival) && !empty($departuredate) && !emp
 
 </head>
 <body>
-
+<div id="head" class="row">
+  <a href="logout.php" class="btn btn-outline-info">
+          <span class="glyphicon glyphicon-log-out"></span> Logout <?php session_start(); echo $_SESSION['user_id']?>
+        </a>
 <div id ="admin" class="hidden">
-    <a href="../../Client Side/content/addFlight.html">Add</a>
-    <a href="../../Client Side/content/addFlightInstance.html">AddI</a>
-    <a href="../../Client Side/content/deleteFlight.html"">Delete</a>
-    <a href="../../Client Side/content/updateFlight.html"">Update</a>
+
+    <a href="../../Client Side/content/addFlight.html" class="btn btn-outline-info">Add Flight</a>
+    <a href="../../Client Side/content/addFlightInstance.html" class="btn btn-outline-info">Add Schedule</a>
+    <a href="../../Client Side/content/deleteFlight.html" class="btn btn-outline-info">Delete Flight</a>
+    <a href="../../Client Side/content/deleteFlightInstance.html" class="btn btn-outline-info">Delete Schedule</a>
+    <a href="../../Client Side/content/updateFlight.html" class="btn btn-outline-info">Update Flight</a>
 </div>
 
 
-<input type="text" id="myInput"  placeholder="Search for names.." title="Type in a name">
 
+</div>
+<div class="row">
+<input type="text" id="myInput"  placeholder="Search for names.." title="Type in a name">
 <?php
 
  if (mysqli_num_rows($result)> 0){
@@ -247,6 +263,7 @@ else if(!empty($departure) && !empty($arrival) && !empty($departuredate) && !emp
     ?>
   <a href="#">&raquo;</a>
 </div>
-
+</div>
+</div>
 </body>
 </html>

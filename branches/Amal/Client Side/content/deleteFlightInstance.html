@@ -22,12 +22,17 @@
 </div>
 <div class="row">
 	<div class="push" id="addFlightForm">
-		<div class="page-header">	<h2>Delete Flight</h2></div>
-<form id="deleteFlight" method="post" action="../../Server Side/scripts/deleteitem.php" enctype="multipart/form-data">
+		<div class="page-header">	<h2>Delete Flight Instance</h2></div>
+<form id="deleteFlight" method="post" action="../../Server Side/scripts/deleteiteminstance.php" enctype="multipart/form-data">
 
  <div class="form-group">
 <label>Flight No:<span class="star">*</span></label> <span id='flightNoTool' data-toggle="tooltip" data-placement="right" title="" data-original-title="Flight Number does not exist" data-trigger='manual'><input class="form-control" type="text" id="flightNo" name="flightNo" required="required" placeholder="Enter Flight No eg AAA-11"></span>
 </div>
+
+ <div class="form-group">
+<label>Departure Date:<span class="star">*</span></label> <input type="date" class="form-control" id="journeyDate" name="dDate"/> 
+</div>
+
 
 <input type="submit" value="Delete" class="btn-primary" name="addItem" id="addItem" />
 

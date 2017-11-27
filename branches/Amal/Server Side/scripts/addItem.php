@@ -38,17 +38,30 @@ $cabIn=$_POST['cabIn'];
 $stopValue=$_POST['stopValue'];
 $location=[];
 $layover=[];
+$Didate=[];
+$diTime=[];
+$aiDate=[];
+$aiTime=[];
 
 for($i=0;$i<intval($stopValue);$i++)
 {
 	$stoppos='stop'.strval($i+1);
 	$layoverm='layover'.strval($i+1);
+	$did='diDate'.strval($i+1);
+	$dit='diTime'.strval($i+1);
+	$aid='aiDate'.strval($i+1);
+	$ait='aiTime'.strval($i+1);
 	$location[]=$_POST[$stoppos];
 	$layover[]=$_POST[$layoverm];
+	$Didate[]=$_POST[$did];
+	$aiDate[]=$_POST[$aid];
+	$diTime[]=$_POST[$dit];
+	$aiTime[]=$_POST[$ait];
+
 }
 
 
-$query = "INSERT INTO `flight_details` (`Flight_No`, `Operator`, `isOperational`, `display_image`, `flight_type`, `Food`, `Total_seats`, `current_seats`, `Economy_Class_Price`, `Business_Class_Price`, `Cancellation_Fee`, `Check-In_Baggage`, `Cabin _Baggage`, `Number_of_Intermediate_Stops`) VALUES ('".$flightNo."','".$airline."',1,'".$target_file."','".$type."','".$food."','".$nop."','".$nop."','".$ePrice."','".$bPrice."','".$cancelFee."','".$checkIn."','".$cabIn."','".$stopValue."')";
+$query = "INSERT INTO `flight_details` (`Flight_No`, `Operator`, `isOperational`, `display_image`, `flight_type`, `Food`, `Total_seats`, `current_seats`, `Economy_Class_Price`, `Business_Class_Price`, `Cancellation_Fee`, `Check-In_Baggage`, `Cabin_Baggage`, `Number_of_Intermediate_Stops`, `Origin`, `Destination`) VALUES ('".$flightNo."','".$airline."',1,'".$target_file."','".$type."','".$food."','".$nop."','".$nop."','".$ePrice."','".$bPrice."','".$cancelFee."','".$checkIn."','".$cabIn."','".$stopValue."','".$from."','".$to."')";
 
 $result = mysqli_query($con,$query);
 
@@ -65,7 +78,7 @@ if($result1)
 for($i=0;$i<intval($stopValue);$i++)
 {
 
-$query2 = "INSERT INTO `flight_stop` (`Flight_No`, `intermediate_stop`, `layover_time`) VALUES ('".$flightNo."','".$location[$i]."','".$layover[$i]."')";
+$query2 = "INSERT INTO `flight_stop` (`Flight_No`, `intermediate_stop`, `layover_time`, `DDate`, `DTime`, `ADate`, `ATime`) VALUES ('".$flightNo."','".$location[$i]."','".$layover[$i]."','".$Didate[$i]."','".$diTime[$i]."','".$aiDate[$i]."','".$aiTime[$i]."')";
 
 $result2 = mysqli_query($con,$query2);
 }
