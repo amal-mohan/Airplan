@@ -5,7 +5,7 @@ $(document).ready(function()
 
 $('#cancel').click(function()
 	{
-		window.location.href = "displayFlights.php";
+		window.location.href = "listairlines.php";
 
 	});
 });

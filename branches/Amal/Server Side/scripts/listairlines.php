@@ -5,11 +5,13 @@
 #country-list{float:left;list-style:none;margin-top:-3px;padding:0;width:190px;position: absolute;}
 #country-list li{padding: 10px; background: #f0f0f0; border-bottom: #bbb9b9 1px solid;}
 #country-list li:hover{background:#ece3d2;cursor: pointer;}
-#search-box{padding: 10px;border: #a8d4b1 1px solid;border-radius:4px;}
+#search-box{padding: 10px;width: 50px;border: #a8d4b1 1px solid;border-radius:4px;}
 #search-box1{padding: 10px;border: #a8d4b1 1px solid;border-radius:4px;}
 #suggestion-box1{ float:right; }
 #departuredate{ padding: 10px;border: #a8d4b1 1px solid;border-radius:4px; }
 #returndate{padding: 10px;border: #a8d4b1 1px solid;border-radius:4px;}
+.red{background-color: red;}
+.green{background-color:  green;}
 </style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="../../Client Side/javascript/utilities.js"></script>
@@ -86,6 +88,9 @@ $("#suggesstion-box1").hide();
 	<a href="logout.php" class="btn btn-outline-info">
           <span class="glyphicon glyphicon-log-out"></span> Logout <?php session_start(); echo $_SESSION['user_id']?>
         </a>
+        <a href="history.php" class="btn btn-outline-info">My Bookings</a>
+            <h2 id="wname">ZENOFLY</h2>
+
 
 </div>
 <div class="row">
@@ -95,13 +100,14 @@ $("#suggesstion-box1").hide();
  <form id = "airportSearch" action = "displayFlights.php" method="post">	
 	<input type="text" name = "search-box"  id="search-box" placeholder="Departure" />
 
-    <input type="date" name="departuredate" id="departuredate"  placeholder="Departure Date(yyyy/mm/dd)">
 	<i class="fa fa-arrows-h" style="font-size:24px"></i>
 
 	<input type="text" name = "search-box1" id="search-box1"  placeholder="Arrival" />
+    <!-- <input type="date" name="departuredate" id="departuredate"  placeholder="Departure Date(yyyy/mm/dd)">
+
 
     <input type="date" name="returndate" id="returndate"  placeholder="Return Date(yyyy/mm/dd)">
-   	
+   	 -->
    	<input type="submit" name="search" value="Search" class="btn-danger btn-lg">
 
 </form>
@@ -116,16 +122,18 @@ include_once('SessionManager.php');
 
 include_once 'dbconnect.php';
 
-$query2 = "SELECT * from flight_details f, user_favorites u where u.User_id = '".$_SESSION['user_id']."' and u.Flight_No = f.Flight_No order by u.count";
+$query2 = "SELECT * from flight_details f, user_favorites u where u.User_id = '".$_SESSION['user_id']."' and u.Flight_No = f.Flight_No order by u.count DESC";
 	$result2 = mysqli_query($con,$query2);
+
 	echo "<h2>My Favorites</h2>";
 	$count=0;
-	if(mysqli_num_rows($result2) >0){
-		echo "<table class='table table-hover'>";
-			echo "<thead class='thead-dark'><th>Flight No</th> <th>Operator</th> <th>Flight_Type</th> <th>Food</th> <th>Economy Price</th><th>Business Price</th><th>Cancellation Fee</th><th>Check-in Baggage</th><th>Cabin Baggage</th><th>Stops</th><th><th></th></thead><tbody>";
+	if(mysqli_num_rows($result2) >0)
+	{
+		echo "<table class='table table-striped table-hover'>";
+			echo "<thead class='thead-dark'><th>Flight No</th> <th>Operator</th> <th>Flight Type</th> <th>Economy Price</th><th>Business Price</th><th>Stops</th><th>Economy Seats Available</th><th>Business Seats Available</th><th>Departure Date</th><th></th></thead><tbody>";
 		while($row = mysqli_fetch_assoc($result2))
 		{
-
+			//
 			if($row['Food']=='o')
 			{
 				$food="Yes";
@@ -134,14 +142,32 @@ $query2 = "SELECT * from flight_details f, user_favorites u where u.User_id = '"
 			{
 				$food="No";
 			}
-			echo "<tr class='clickable-row' data-href = 'flight_details.php?flight_no=".urlencode($row["Flight_No"])."'><td>".$row["Flight_No"]."</td><td>".$row["Operator"]."</td><td>".$row["flight_type"]."</td><td>".$food."</td><td>".$row["Economy_Class_Price"]."</td><td>".$row["Business_Class_Price"]."</td><td>".$row["Cancellation_Fee"]."</td><td>".$row["Check-In_Baggage"]."</td><td>".$row["Cabin_Baggage"]."</td><td>".$row["Number_of_Intermediate_Stops"]."</td>";
-			echo "<td><img class='tn' src = '".$row["display_image"]."'/></td>";
-			echo "</tr>";
-           $count+=1;
+			$query3 = "SELECT Departure_Date,Departure_Time,isOperational,Business_Class_Seats,Economy_Class_Seats from flight where Flight_No='".$row["Flight_No"]."'";
+			$result3 = mysqli_query($con,$query3);
+			$avb="red";
+			while($row1 = mysqli_fetch_assoc($result3))
+			{
+				if(date($row1['Departure_Date'])>=date("Y-m-d") && $row['isOperational']=='1' && $row1['isOperational']=='1' && ($row1['Business_Class_Seats']>0 || $row1['Economy_Class_Seats']))
+				{
+					echo "<tr class='clickable-row' data-href = 'flight_details.php?flight_no=".urlencode($row["Flight_No"])."&departuredate=".urlencode($row1["Departure_Date"])."'><td>".$row["Flight_No"]."</td><td>".$row["Operator"]."</td><td>".$row["flight_type"]."</td><td>".$row["Economy_Class_Price"]."</td><td>".$row["Business_Class_Price"]."</td><td>".$row["Number_of_Intermediate_Stops"]."</td><td>{$row1['Economy_Class_Seats']}</td><td>{$row1['Business_Class_Seats']}</td><td>{$row1['Departure_Date']}</td>";
+					echo "<td><img class='tn' src = '".$row["display_image"]."'/></td>";
+					echo "</tr>";
+					$avb="green";
+				           $count+=1;
            if($count>=5)
            {
            	break;
            } 
+
+				}
+
+		
+			}
+			//
+
+
+			
+			
 		}
 		echo "</tbody></table>";
 	}

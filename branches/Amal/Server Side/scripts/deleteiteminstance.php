@@ -17,9 +17,7 @@ $result1 = mysqli_query($con,$query1);
 if($result1)
 { 
 
-echo $query1;  
-
-//header("Location: displayFlights.php");
+header("Location: displayFlights.php");
 
 }
 

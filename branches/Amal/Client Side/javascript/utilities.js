@@ -106,6 +106,8 @@ $(document).ready(function()
 var today = new Date();
 	var month=today.getMonth()+1
 	var day=today.getDate()
+  	var hour = today.getHours();
+  	var minute = today.getMinutes();
 
   	if(hour<10)
 	{
@@ -130,6 +132,7 @@ var today = new Date();
 
 		$('#intermediateStop').find('input[type="date"]').val(today.getFullYear()+"-"+month+"-"+day)
 
+	$('#intermediateStop').find('input[type="time"]').val(hour+':'+minute)
 
 	});
 

@@ -18,7 +18,7 @@ $(document).ready(function()
 	validlist=[]
 	$('#addFlight').submit(function()
 	{
-		if(validlist.length==10)
+		if(validlist.length==7)
 		{
 			if($('#displayImage').attr('src')=='#')
 			{
@@ -48,6 +48,7 @@ $(document).ready(function()
 		}
 
 	});
+
 
 $('#flightNo').focus(function()
 	{

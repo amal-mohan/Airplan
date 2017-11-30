@@ -3,13 +3,13 @@ $(document).ready(function()
 {
 	//add date compare logic
 
-	var bug=10
+	var bug=11
 
 
 	validlist=[]
 	$('#addFlight').submit(function()
 	{
-		if(validlist.length==10)
+		if(validlist.length>=11)
 		{
 			if($('#displayImage').attr('src')=='#')
 			{
@@ -43,8 +43,7 @@ $(document).ready(function()
 	$('#flightNo').focus(function()
 	{
 		$('#flightNo').addClass('textBoxBlack')
-		$('#flightNo').removeClass('textBoxRed')
-	
+		$('#flightNo').removeClass('textBoxRed')	
 	});
 
 	$('#nop').focus(function()
@@ -53,6 +52,15 @@ $(document).ready(function()
 		$('#nop').removeClass('textBoxRed')
 	
 	});
+
+
+	$('#nop1').focus(function()
+	{
+		$('#nop1').addClass('textBoxBlack')
+		$('#nop1').removeClass('textBoxRed')
+	
+	});
+
 
 	$('#airline').focus(function()
 	{
@@ -194,7 +202,7 @@ $(document).ready(function()
 		var from=$("#from").val()		
 		if((from)!="")
 		{
-			if(from.match(/^[a-zA-Z0-9]+$/)==null)
+			if(from.match(/^[a-zA-Z0-9\s]+$/)==null)
 			{
 				$('#from').addClass('textBoxRed')
 				$('#from').removeClass('textBoxBlack')
@@ -218,10 +226,10 @@ $(document).ready(function()
 		var to=$("#to").val()		
 		if((to)!="")
 		{
-			if(to.match(/^[a-zA-Z0-9]+$/)==null)
+			if(to.match(/^[a-zA-Z0-9\s]+$/)==null)
 			{
 				$('#to').addClass('textBoxRed')
-				$('#flightNo').removeClass('textBoxBlack')
+				$('#to').removeClass('textBoxBlack')
 				$('#toTool').tooltip('show')
 				setTimeout(function(){$('#toTool').tooltip('hide')},4000)
 			if(validlist.indexOf(this.id) != -1)
@@ -260,6 +268,33 @@ $(document).ready(function()
 
 		}
 });
+
+		$('#nop1').blur(function()
+	{
+		$('#nop1').addClass('textBoxBlack')
+		$('#nop1').removeClass('textBoxRed')
+		var nop1=$("#nop1").val()		
+		if((nop1)!="")
+		{
+			if(nop1.match(/^[0-9]+$/)==null)
+			{
+				$('#nop1').addClass('textBoxRed')
+				$('#nop1').removeClass('textBoxBlack')
+				$('#nop1Tool').tooltip('show')
+				setTimeout(function(){$('#nop1Tool').tooltip('hide')},4000)
+			if(validlist.indexOf(this.id) != -1)
+				{	
+					validlist.splice(validlist.indexOf(this.id),1)
+				}
+			}
+			else if (validlist.indexOf(this.id) == -1)
+			{		
+				validlist.push(this.id)
+			}
+
+		}
+});
+
 	$('#bPrice').blur(function()
 	{
 		$('#bPrice').addClass('textBoxBlack')

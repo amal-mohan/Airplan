@@ -28,6 +28,18 @@ color: red;
 	padding: 18px;
 	margin-left: 10px;
 }
+.push1
+{
+	padding-left: 18px;
+	margin-left: 25px;
+}
+
+.push2
+{
+	padding-left: 10px;
+	margin-left:  8px;
+}
+
 
 #cent-head
 {
@@ -39,6 +51,12 @@ color: red;
 	width: 60%;
 }
 		
+#wname
+{
+	color:#154360;
+	margin-left: 20px;
+	float: left;
+}
 .register-table
 {
 	padding: 5px;
@@ -56,7 +74,15 @@ color: red;
 	padding: 20px;
 }
 
-#airportSearch input[type="text"],input[type="date"]
+#airportSearch input[type="text"]
+{
+	width: 400px;
+		margin: 5px;
+	color: black;
+
+}
+
+#airportSearch input[type="date"]
 {
 	width: 220px;
 	margin: 5px;
@@ -79,7 +105,7 @@ margin: 5px;
 
 #head
 {
-background-color: #99ffcc;
+background-color: #FAE5D3;
 
 }
 
@@ -106,4 +132,9 @@ margin: 17px;
 	height: 50px;
 
 
+}
+
+#leftp
+{
+	height: 100%;
 }

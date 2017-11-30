@@ -30,6 +30,7 @@ $from=$_POST['from'];
 $to=$_POST['to'];
 $food=$_POST['food'];
 $nop=$_POST['nop'];
+$nop1=$_POST['nop1'];
 $ePrice=$_POST['ePrice'];
 $bPrice=$_POST['bPrice'];
 $cancelFee=$_POST['cancelFee'];
@@ -61,17 +62,18 @@ for($i=0;$i<intval($stopValue);$i++)
 }
 
 
-$query = "INSERT INTO `flight_details` (`Flight_No`, `Operator`, `isOperational`, `display_image`, `flight_type`, `Food`, `Total_seats`, `current_seats`, `Economy_Class_Price`, `Business_Class_Price`, `Cancellation_Fee`, `Check-In_Baggage`, `Cabin_Baggage`, `Number_of_Intermediate_Stops`, `Origin`, `Destination`) VALUES ('".$flightNo."','".$airline."',1,'".$target_file."','".$type."','".$food."','".$nop."','".$nop."','".$ePrice."','".$bPrice."','".$cancelFee."','".$checkIn."','".$cabIn."','".$stopValue."','".$from."','".$to."')";
+$query = "INSERT INTO `flight_details` (`Flight_No`, `Operator`, `isOperational`, `display_image`, `flight_type`, `Food`, `Economy_Class_Price`, `Business_Class_Price`, `Cancellation_Fee`, `Check-In_Baggage`, `Cabin_Baggage`, `Number_of_Intermediate_Stops`) VALUES ('".$flightNo."','".$airline."',1,'".$target_file."','".$type."','".$food."','".$ePrice."','".$bPrice."','".$cancelFee."','".$checkIn."','".$cabIn."','".$stopValue."')";
 
 $result = mysqli_query($con,$query);
 
 if($result)
 {   
 
-$query1 = "INSERT INTO `flight` (`Flight_No`, `Departure_Date`, `Departure_Time`, `Arrival_Date`, `Arrival_Time`) VALUES  ('".$flightNo."','".$dDate."','".$dTime."','".$aDate."','".$aTime."')";
+$query1 = "INSERT INTO `flight` (`Flight_No`, `Departure_Date`, `Departure_Time`, `Arrival_Date`, `Arrival_Time`,`Business_Class_Seats`,`Economy_Class_Seats`,`isOperational`, `Origin`, `Destination`) VALUES  ('".$flightNo."','".$dDate."','".$dTime."','".$aDate."','".$aTime."','{$nop1}','{$nop}',1,'{$from}','{$to}')";
 
 
 $result1 = mysqli_query($con,$query1);
+
 
 if($result1)
 {   

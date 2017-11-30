@@ -19,6 +19,7 @@
 	<a href="../../Server Side/scripts/logout.php" class="btn btn-outline-info">
           <span class="glyphicon glyphicon-log-out"></span> Logout <?php session_start(); echo $_SESSION['user_id']?>
         </a>
+        <h2 id="wname">ZENOFLY</h2>
 
 </div>
 <div class="row">
@@ -85,8 +86,14 @@
 
  <div class="form-group">
 
-<label>Number of Passengers:<span class="star">*</span></label> <span id='nopTool' data-toggle="tooltip" data-placement="right" title="" data-original-title="Number of passengers should be a number" data-trigger='manual'><input id="nop" type="text" placeholder="Enter Number of Passengers" name="nop" class="form-control" required="required"></span>
+<label>Number of Economy Class Seats:<span class="star">*</span></label> <span id='nopTool' data-toggle="tooltip" data-placement="right" title="" data-original-title="Number of passengers should be a number" data-trigger='manual'><input id="nop" type="text" placeholder="Enter Number of Passengers" name="nop" class="form-control" required="required"></span>
 </div>
+
+ <div class="form-group">
+
+<label>Number of Business Class Seats:<span class="star">*</span></label> <span id='nop1Tool' data-toggle="tooltip" data-placement="right" title="" data-original-title="Number of passengers should be a number" data-trigger='manual'><input id="nop1" type="text" placeholder="Enter Number of Passengers" name="nop1" class="form-control" required="required"></span>
+</div>
+
 
  <div class="form-group">
 
@@ -121,9 +128,9 @@
 
 <div id="intermediateStop"></div>
 
-<input type="submit" value="Add" class="btn-primary" name="addItem" id="addItem" />
+<input type="submit" value="Add" class="btn btn-primary" name="addItem" id="addItem" />
 
-<input type="button" id="cancel" class="btn-secondary" value="Cancel">
+<input type="button" id="cancel" class="btn btn-secondary" value="Cancel">
 </form>
 </div>
 </div>

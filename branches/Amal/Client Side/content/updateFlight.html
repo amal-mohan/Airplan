@@ -18,6 +18,8 @@
 	<a href="../../Server Side/scripts/logout.php" class="btn btn-outline-info">
           <span class="glyphicon glyphicon-log-out"></span> Logout <?php session_start(); echo $_SESSION['user_id']?>
         </a>
+                <h2 id="wname">ZENOFLY</h2>
+
 
 </div>
 <div class="row">
@@ -28,7 +30,7 @@
 
 <label>Flight No:<span class="star">*</span></label><span id='flightNoTool' data-toggle="tooltip" data-placement="right" title="" data-original-title="Incorrect Flight Number Format" data-trigger='manual'> <input type="text" class='form-control' id="flightNo" name="flightNo" required="required" placeholder="Enter Flight No eg AAA-11"></span>
 </div>
-<input type="button" id="cancel1" class="btn-secondary" value="Cancel">
+<input type="button" id="cancel1" class="btn btn-secondary" value="Cancel">
 
 
 <div id="flightDetails" class ="hidden">
@@ -51,15 +53,6 @@
 <label>Type:<span class="star">*</span></label> <select class="form-control" name="type"><option selected="selected" value="Domestic">Domestic</option><option value="International">International</option><option value="Dual">Dual</option></select>
 </div>
 
- <div class="form-group">
-
-<label>From:<span class="star">*</span></label> <span id='fromTool' data-toggle="tooltip" data-placement="right" title="" data-original-title="Orgin should have only alphanumeric characters" data-trigger='manual'><input id="from" placeholder="Enter Origin Airport" type="text" class="form-control" name="from" required="required"></span>
-</div>
-
- <div class="form-group">
-
-<label>To:<span class="star">*</span></label> <span id='toTool' data-toggle="tooltip" data-placement="right" title="" data-original-title="Destination should have only alphanumeric characters" data-trigger='manual'><input id="to" type="text" placeholder="Enter Destination Airport" name="to" class="form-control" required="required"></span>
-</div>
 
  <div class="form-group">
 
@@ -67,10 +60,6 @@
  <input class="form-check-input" type="checkbox" name="food" checked="true"> 
 </div>
 
- <div class="form-group">
-
-<label>Number of Passengers:<span class="star">*</span></label> <span id='nopTool' data-toggle="tooltip" data-placement="right" title="" data-original-title="Number of passengers should be a number" data-trigger='manual'><input id="nop" type="text" placeholder="Enter Number of Passengers" name="nop" class="form-control" required="required"></span>
-</div>
 
  <div class="form-group">
 
@@ -97,17 +86,10 @@
 <label>Cabin Baggage:<span class="star">*</span></label> <span id='cabInTool' data-toggle="tooltip" data-placement="right" title="" data-original-title="Incorrect cabin baggage weight" data-trigger='manual'><input type="text" id="cabIn" placeholder="Enter Cabin Baggage Limit" name="cabIn" class="form-control" required="required"></span>
 </div>
 
- <div class="form-group">
 
-<label>Number of Intermediate Stops:<span class="star">*</span></label> <select class="form-control" name="stopValue" id="stopValue"><option value="0" selected="selected">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>
-</div>
+<input type="submit" value="Update" class=" btn btn-primary" name="addItem" id="addItem" />
 
-
-<div id="intermediateStop"></div>
-
-<input type="submit" value="Update" class="btn-primary" name="addItem" id="addItem" />
-
-<input type="button" id="cancel" class="btn-secondary" value="Cancel">
+<input type="button" id="cancel" class="btn btn-secondary" value="Cancel">
 </form>
 </div>
 </div>

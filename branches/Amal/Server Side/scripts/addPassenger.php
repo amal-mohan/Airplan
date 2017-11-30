@@ -17,6 +17,7 @@
 	<a href="../../Server Side/scripts/logout.php" class="btn btn-outline-info">
           <span class="glyphicon glyphicon-log-out"></span> Logout <?php session_start(); echo $_SESSION['user_id']?>
      </a>
+        <h2 id="wname">ZENOFLY</h2>
 
 </div>
 <div class="row">
@@ -24,7 +25,6 @@
 <div class="page-header">	<h2>Summary</h2></div>
 
 <?php 
-$_SESSION['Ddate']="2017-08-07";
 
 include_once('SessionManager.php');
 
@@ -33,19 +33,47 @@ include_once 'dbconnect.php';
 if (isset($_POST['login'])) 
 {
 
-	for($i=0;$i<intval($_SESSION['nop']);$i++)
-{
-
- $query  = "INSERT INTO `passenger`(`user_id`, `Passenger_Name`, `Flight_No`, `Sex`, `Age`, `Departure_Date`) VALUES ('".$_SESSION['user_id']."','".$_SESSION['Pnames'][$i]."','".$_SESSION['flightno']."','".$_SESSION['Sex'][$i]."','".$_SESSION['Age'][$i]."','".$_SESSION['Ddate']."')";
-$res    = mysqli_query($con,$query);
-
-}
-
-
- $query="INSERT INTO `Booking`(`user_id`, `Price`, `Class`, `Flight_No`, `Departure_Date`) VALUES ('".$_SESSION['user_id']."','".$_SESSION['Price']."','".$_SESSION['class']."','".$_SESSION['flightno']."','".$_SESSION['Ddate']."')";
+ $query="SELECT `Booking_Id` FROM `booking` ORDER BY `Booking_Id` DESC";
 
  $res    = mysqli_query($con,$query);
 
+ if(mysqli_num_rows($res) >0)
+ {
+ 	$row = mysqli_fetch_assoc($res);
+ 	$bid=$row['Booking_Id']+1;
+ }
+else
+{
+	$bid=1;
+
+}
+
+$query="INSERT INTO `Booking`(`user_id`, `Price`, `Class`, `Flight_No`, `Departure_Date`,`Status`,`Number_of_Passengers`,`Booking_Id`) VALUES ('".$_SESSION['user_id']."','".$_SESSION['Price']."','".$_SESSION['class']."','".$_SESSION['flightno']."','".$_SESSION['Ddate']."', 'Scheduled','{$_SESSION["nop"]}',{$bid})";
+
+ $res    = mysqli_query($con,$query);
+
+
+	for($i=0;$i<intval($_SESSION['nop']);$i++)
+{
+
+ $query  = "INSERT INTO `passenger`(`user_id`, `Passenger_Name`, `Flight_No`, `Sex`, `Age`, `Departure_Date`,`Booking_Id`) VALUES ('".$_SESSION['user_id']."','".$_SESSION['Pnames'][$i]."','".$_SESSION['flightno']."','".$_SESSION['Sex'][$i]."','".$_SESSION['Age'][$i]."','".$_SESSION['Ddate']."',{$bid})";
+$res    = mysqli_query($con,$query);
+}
+
+if($_SESSION['class']=='b')
+{
+
+$query="UPDATE flight SET Business_Class_Seats=Business_Class_Seats-{$_SESSION["nop"]}  WHERE Departure_Date='{$_SESSION['Ddate']}' AND `Flight_No` = '".$_SESSION['flightno']."'";
+
+ $res    = mysqli_query($con,$query);
+}
+else
+{
+	$query="UPDATE flight SET Economy_Class_Seats=Economy_Class_Seats-{$_SESSION["nop"]}  WHERE Departure_Date='{$_SESSION['Ddate']}' AND `Flight_No` = '".$_SESSION['flightno']."'";
+
+ $res    = mysqli_query($con,$query);
+
+}
 
  $query="SELECT * FROM `user_favorites` WHERE `Flight_No`='".$_SESSION['flightno']."' AND `User_id`='".$_SESSION['user_id']."'";
 

@@ -18,6 +18,7 @@
 	<a href="../../Server Side/scripts/logout.php" class="btn btn-outline-info">
           <span class="glyphicon glyphicon-log-out"></span> Logout <?php session_start(); echo $_SESSION['user_id']?>
         </a>
+        <h2 id="wname">ZENOFLY</h2>
 
 </div>
 <div class="row">
@@ -29,9 +30,9 @@
 <label>Flight No:<span class="star">*</span></label> <span id='flightNoTool' data-toggle="tooltip" data-placement="right" title="" data-original-title="Flight Number does not exist" data-trigger='manual'><input class="form-control" type="text" id="flightNo" name="flightNo" required="required" placeholder="Enter Flight No eg AAA-11"></span>
 </div>
 
-<input type="submit" value="Delete" class="btn-primary" name="addItem" id="addItem" />
+<input type="submit" value="Delete" class="btn btn-primary" name="addItem" id="addItem" />
 
-<input type="button" id="cancel" class="btn-secondary" value="Cancel">
+<input type="button" id="cancel" class="btn btn-secondary" value="Cancel">
 
 
 </form>
