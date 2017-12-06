@@ -1,0 +1,62 @@
+.hidden{
+	visibility: hidden;
+}
+
+.visible{
+	visibility: visible;
+}
+
+.textBoxRed
+{
+border-color: red;
+}
+
+.textBoxBlack
+{
+border-color: black;
+}
+
+
+.tooltip.right .tooltip-arrow {
+	border-right-color: #FADBD8;}
+
+
+.tooltip-inner
+{
+	background-color: #FADBD8;
+	color: #2C3E50;
+	border: 1px solid #FADBD8;
+	padding: 10px;
+}
+
+.success
+{
+	color: green;
+}
+.error
+{
+    color: red;
+}
+.content
+{
+	width:900px;
+	margin:0 auto;
+}
+.ok, .info, .error {
+	padding: 0px 2px;
+}
+
+.ok {
+	background: #cfc;
+	border: 2px solid #9c9;
+}
+
+.info {
+	background: #ffc;
+	border: 2px solid #cc9;
+}
+
+.error {
+	background: #fcc;
+	border: 2px solid #c99;
+}

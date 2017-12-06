@@ -1,0 +1,31 @@
+<html>
+<head>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="../stylesheets/temp_listAirlines.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="../javascript/listAirlines.js"></script>
+	<script src="../javascript/sessionmanager.js"></script>
+
+</head>
+<body>
+<div class="frmSearch">
+<h3> Search Flights </h3>
+ <form id = "airportSearch" action = "../../Server Side/scripts/displayFlights.php" method="post">	
+	<input type="text" name = "search-box" id="search-box" placeholder="Departure" />
+	<span id="suggesstion-box"></span>
+
+	<input type="text" name = "search-box1" id="search-box1" placeholder="Arrival" />
+	<span id="suggesstion-box1"></span>
+    <br/>
+    <input type="text" name="departuredate" id="departuredate" placeholder="Departure Date(yyyy/mm/dd)">
+
+    <input type="text" name="returndate" id="returndate" placeholder="Return Date(yyyy/mm/dd)">
+    <br/>
+	<input type="submit" name="search" value="Search">
+</form>	
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Update Flight</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/functional.css">
+	<script src="../javascript/binder.js"></script>
+	<link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+	<script src="../javascript/updateFlight.js"></script>
+	<script src="../javascript/sessionmanager.js"></script>
+
+</head>
+<body>
+<div id="head" class="row">
+	<a href="../../Server Side/scripts/logout.php" class="btn btn-outline-info">
+          <span class="glyphicon glyphicon-log-out"></span> Logout <?php session_start(); echo $_SESSION['user_id']?>
+        </a>
+                <h2 id="wname">ZENOFLY</h2>
+
+
+</div>
+<div class="row">
+<div class="push" id="addFlightForm">
+<div class="page-header">	<h2>Update Flight</h2></div>
+
+ <div class="form-group">
+
+<label>Flight No:<span class="star">*</span></label><span id='flightNoTool' data-toggle="tooltip" data-placement="right" title="" data-original-title="Incorrect Flight Number Format" data-trigger='manual'> <input type="text" class='form-control' id="flightNo" name="flightNo" required="required" placeholder="Enter Flight No eg AAA-11"></span>
+</div>
+<input type="button" id="cancel1" class="btn btn-secondary" value="Cancel">
+
+
+<div id="flightDetails" class ="hidden">
+
+<form id="updateFlight" method="post" action="../../Server Side/scripts/updateFlight.php" enctype="multipart/form-data">
+
+<input type = "hidden" name = "flightNo" value = "" id="fno"/>
+<div class='form-group'>
+<label for="flightImage"> Upload Image:<span class="star">*</span></label> <span id='displayImageTool' data-toggle="tooltip" data-placement="right" title="" data-original-title="Upload Airline Image" data-trigger='manual'><input class="custom-file-input" id="flightImage" type="file" name="flightImage"></input></span>
+<br><img id="displayImage" class="visible tn" src="#">
+</div>
+
+ <div class="form-group">
+<label>Airlines:<span class="star">*</span></label> <span id='airlineTool' data-toggle="tooltip" data-placement="right" title="" data-original-title="Airline name should have only alphanumeric characters" data-trigger='manual'><input type="text" id="airline" class="form-control" name="airline" placeholder="Enter Airline" required="required"></span>
+<!--if duel at least one stops-->
+</div>
+
+ <div class="form-group">
+
+<label>Type:<span class="star">*</span></label> <select class="form-control" name="type"><option selected="selected" value="Domestic">Domestic</option><option value="International">International</option><option value="Dual">Dual</option></select>
+</div>
+
+
+ <div class="form-group">
+
+<label>Food:<span class="star">*</span></label><br/>
+ <input class="form-check-input" type="checkbox" name="food" checked="true"> 
+</div>
+
+
+ <div class="form-group">
+
+<label>Economy Class Price:<span class="star">*</span></label><span id='ePriceTool' data-toggle="tooltip" data-placement="right" title="" data-original-title="Incorrect price format" data-trigger='manual'> <input type="text" id="ePrice" class="form-control" placeholder="Enter Economy Class Cost" name="ePrice" required="required"></span>
+</div>
+
+ <div class="form-group">
+
+<label>Business Class Price:<span class="star">*</span></label><span id='bPriceTool' data-toggle="tooltip" data-placement="right" title="" data-original-title="Incorrect price format" data-trigger='manual'> <input type="text" id="bPrice" placeholder="Enter Business Class Cost" class="form-control" name="bPrice" required="required"></span>
+</div>
+
+ <div class="form-group">
+
+<label>Cancellation Fee:<span class="star">*</span></label><span id='cancelFeeTool' data-toggle="tooltip" data-placement="right" title="" data-original-title="Incorrect cancellation fee format" data-trigger='manual'> <input type="text" id="cancelFee" placeholder="Enter Cancellation Cost" name="cancelFee" class="form-control" required="required"></span>
+</div>
+
+ <div class="form-group">
+
+<label>Check-In Baggage:<span class="star">*</span></label> <span id='checkInTool' data-toggle="tooltip" data-placement="right" title="" data-original-title="Incorrect checkIn baggage weight" data-trigger='manual'><input type="text" id="checkIn" name="checkIn" placeholder="Enter CheckIn Baggage Limit" required="required" class="form-control"></span>
+</div>
+
+ <div class="form-group">
+
+<label>Cabin Baggage:<span class="star">*</span></label> <span id='cabInTool' data-toggle="tooltip" data-placement="right" title="" data-original-title="Incorrect cabin baggage weight" data-trigger='manual'><input type="text" id="cabIn" placeholder="Enter Cabin Baggage Limit" name="cabIn" class="form-control" required="required"></span>
+</div>
+
+
+<input type="submit" value="Update" class=" btn btn-primary" name="addItem" id="addItem" />
+
+<input type="button" id="cancel" class="btn btn-secondary" value="Cancel">
+</form>
+</div>
+</div>
+</div>
+</body>
+</html>
